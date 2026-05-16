@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Comunicado ANEFF - Legado y Firma</title>
+    <title>Comunicado ANEFF - Final</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Lora:ital,wght@0,400;0,500;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -60,6 +60,7 @@
             object-fit: contain;
         }
 
+        /* Ajuste de visibilidad de Marca de Agua */
         .watermark-golden {
             position: absolute;
             top: 50%;
@@ -67,7 +68,7 @@
             transform: translate(-50%, -50%);
             width: 95%;
             height: auto;
-            opacity: 0.04;
+            opacity: 0.09; /* Opacidad aumentada para mayor visibilidad */
             pointer-events: none;
             z-index: 0;
         }
@@ -108,17 +109,16 @@
         }
 
         .ranking-section {
-            margin-top: 2rem;
-            padding: 1.2rem;
+            margin-top: 2.5rem;
+            padding: 0.5rem;
             background: #fdfbf7;
-            border: 1px solid rgba(218, 165, 32, 0.08);
             border-radius: 4px;
             text-align: center;
         }
 
         .ranking-image {
             width: 100%;
-            max-width: 550px;
+            max-width: 600px;
             margin: 0 auto;
             display: block;
             box-shadow: 0 10px 25px rgba(0,0,0,0.08);
@@ -147,12 +147,13 @@
         <img src="ANEFF SLOGAN.jpg" alt="Logo SEP/Gob" class="logo-left">
         <img src="Messenger_creation_193DEA5B-9CD6-4634-8DB4-F715FFF921EA.jpeg" alt="Logo ANEFF" class="logo-right">
 
+        <!-- Marca de agua de Fibonacci con trazo más grueso -->
         <div class="watermark-golden">
-            <svg viewBox="0 0 233 144" fill="none" stroke="#daa520" stroke-width="0.3">
-                <path d="M144,0 v144 h-144 v-144 h144 z" stroke-dasharray="1 1" />
-                <path d="M144,144 h89 v-89 h-89 z" stroke-dasharray="1 1" />
-                <path d="M233,55 v-55 h-55 z" stroke-dasharray="1 1" />
-                <path d="M0,0 C144,0 144,144 144,144 C144,144 233,144 233,55 C233,55 233,0 178,0 C178,0 144,0 144,34" stroke-width="0.8" />
+            <svg viewBox="0 0 233 144" fill="none" stroke="#daa520" stroke-width="0.8">
+                <path d="M144,0 v144 h-144 v-144 h144 z" stroke-dasharray="2 2" opacity="0.5" />
+                <path d="M144,144 h89 v-89 h-89 z" stroke-dasharray="2 2" opacity="0.5" />
+                <path d="M233,55 v-55 h-55 z" stroke-dasharray="2 2" opacity="0.5" />
+                <path d="M0,0 C144,0 144,144 144,144 C144,144 233,144 233,55 C233,55 233,0 178,0 C178,0 144,0 144,34" stroke-width="1.5" />
             </svg>
         </div>
 
@@ -171,7 +172,7 @@
                 <p class="font-montserrat text-[9px] text-gray-400 uppercase tracking-[0.3em] mb-1">Memoria de una Evolución</p>
                 <p class="text-lg text-gray-600 italic">"Del origen humanista a la realidad en las aulas"</p>
                 <div class="h-px w-20 bg-yellow-600 my-3"></div>
-                <p class="text-xl font-cinzel font-bold text-gray-900 leading-tight">"Recordar es volver a pasar por el corazón el pulso del universo"</p>
+                <p class="text-xl font-cinzel font-bold text-gray-900 leading-tight">"Recordar es volver a pasar por el corazón el pulso del universo™"</p>
             </div>
 
             <div class="text-body space-y-4">
@@ -204,17 +205,16 @@
             </div>
 
             <div class="ranking-section">
-                <h4 class="font-cinzel text-gray-700 font-bold mb-4 tracking-widest text-sm uppercase">Cuadro de Méritos Institucionales</h4>
                 <img src="Screenshot_2025-11-25-13-36-50-25_c37d74246d9c81aa0bb824b57eaf7062.jpg" alt="Tabla de Posiciones ANEFF" class="ranking-image">
             </div>
 
             <div class="footer-stamp">
                 <h3 class="font-cinzel text-lg font-bold text-gray-900 mb-1">¡5 años transformando la conciencia nacional!</h3>
-                <p class="font-montserrat text-[10px] tracking-[0.2em] text-gray-400 uppercase">Asociación Nacional de Educación Financiera Fractal</p>
+                <p class="font-montserrat text-[10px] tracking-[0.2em] text-gray-400 uppercase">Asociación Nacional de Educación Financiera Fractal™</p>
                 <div class="mt-4 flex justify-center items-center gap-4 text-[9px] font-montserrat text-gray-300 tracking-[0.4em]">
-                    <span>RAÍCES 2021</span>
+                    <span>2021</span>
                     <span class="text-yellow-600">•</span>
-                    <span>PRESENTE 2026</span>
+                    <span>2026</span>
                 </div>
             </div>
 
