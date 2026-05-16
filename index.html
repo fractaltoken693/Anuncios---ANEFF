@@ -9,95 +9,124 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         body {
-            background-color: #0a0f18; /* Fondo formal y profundo */
+            background-color: #0a0f18; 
             background-image: 
-                radial-gradient(circle at 50% 0%, rgba(218, 165, 32, 0.12), transparent 60%),
-                linear-gradient(rgba(218, 165, 32, 0.04) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(218, 165, 32, 0.04) 1px, transparent 1px);
-            background-size: 100% 100%, 61.8px 61.8px, 61.8px 61.8px; /* Espaciado fractal áureo */
+                radial-gradient(circle at 50% 0%, rgba(218, 165, 32, 0.15), transparent 70%),
+                linear-gradient(rgba(218, 165, 32, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(218, 165, 32, 0.05) 1px, transparent 1px);
+            background-size: 100% 100%, 61.8px 61.8px, 61.8px 61.8px; 
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            padding: 3rem 2rem;
+            padding: 4rem 2rem;
             font-family: 'Lora', serif;
         }
 
         .document-container {
             background-color: #ffffff;
             width: 100%;
-            max-width: 800px;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
-            border-radius: 4px;
+            max-width: 850px;
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.5);
+            border-radius: 2px;
             position: relative;
             overflow: hidden;
+            border: 1px solid rgba(218, 165, 32, 0.2);
         }
 
-        /* Línea dorada superior institucional */
         .header-line {
-            height: 6px;
-            background: linear-gradient(90deg, #b8860b, #daa520, #b8860b);
+            height: 8px;
+            background: linear-gradient(90deg, #8b6b1d, #daa520, #8b6b1d);
             width: 100%;
         }
 
-        /* Geometría Fractal de ANEFF en el fondo */
-        .watermark {
+        /* Logos con nombres de archivo actualizados */
+        .logo-left {
+            position: absolute;
+            top: 40px;
+            left: 50px;
+            max-width: 140px;
+            max-height: 80px;
+            z-index: 30;
+            object-fit: contain;
+        }
+
+        .logo-right {
+            position: absolute;
+            top: 40px;
+            right: 50px;
+            max-width: 120px;
+            max-height: 80px;
+            z-index: 30;
+            object-fit: contain;
+        }
+
+        .watermark-fractal {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            opacity: 0.04;
+            opacity: 0.06;
             pointer-events: none;
             z-index: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
         }
 
         .content-wrapper {
-            padding: 4rem 5rem;
+            padding: 9rem 5.5rem 5rem 5.5rem;
             position: relative;
             z-index: 10;
         }
 
-        h1, h2, .font-cinzel {
-            font-family: 'Cinzel', serif;
-        }
-
-        .font-montserrat {
-            font-family: 'Montserrat', sans-serif;
-        }
+        h1, .font-cinzel { font-family: 'Cinzel', serif; }
+        .font-montserrat { font-family: 'Montserrat', sans-serif; }
 
         .slogan-box {
-            border-left: 3px solid #b8860b;
-            padding-left: 1.5rem;
-            margin: 2.5rem 0;
-            background: linear-gradient(90deg, rgba(184, 134, 11, 0.05) 0%, transparent 100%);
-            padding-top: 1rem;
-            padding-bottom: 1rem;
+            border-left: 2px solid #daa520;
+            padding: 1.5rem 2rem;
+            margin: 3rem 0;
+            background: linear-gradient(90deg, rgba(218, 165, 32, 0.03) 0%, transparent 100%);
         }
 
         .text-body {
-            color: #333333;
-            line-height: 1.8;
-            font-size: 1.05rem;
+            color: #1a1a1a;
+            line-height: 1.9;
+            font-size: 1.1rem;
             text-align: justify;
         }
 
         .highlight-gold {
-            color: #9e7305;
-            font-weight: 500;
+            color: #8b6b1d;
+            font-weight: 600;
         }
         
         .footer-stamp {
-            border-top: 1px solid #eaeaea;
-            margin-top: 3rem;
-            padding-top: 2rem;
+            border-top: 1px solid rgba(0,0,0,0.06);
+            margin-top: 4rem;
+            padding-top: 3rem;
             text-align: center;
         }
 
-        @media (max-width: 640px) {
-            .content-wrapper { padding: 2rem; }
+        /* Sección de Tabla de Posiciones */
+        .ranking-section {
+            margin-top: 4rem;
+            padding: 2rem;
+            background: #fdfbf7;
+            border: 1px solid #eee;
+            border-radius: 4px;
+        }
+
+        .ranking-image {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            display: block;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border: 4px solid white;
+        }
+
+        @media (max-width: 768px) {
+            .content-wrapper { padding: 8rem 2rem 3rem 2rem; }
+            .logo-left, .logo-right { max-width: 80px; top: 25px; }
             .text-body { font-size: 1rem; }
         }
     </style>
@@ -107,51 +136,44 @@
     <div class="document-container">
         <div class="header-line"></div>
         
-        <div class="watermark">
-            <!-- Patrón Fractal / Flor de la Vida -->
-            <svg width="600" height="600" viewBox="0 0 200 200" fill="none" stroke="#b8860b" stroke-width="0.6">
-                <!-- Sucesión de Fibonacci en radios -->
-                <circle cx="100" cy="100" r="8" />
+        <!-- Imágenes vinculadas a tus archivos subidos -->
+        <img src="ANEFF SLOGAN.jpg" alt="Logo SEP/Gob" class="logo-left">
+        <img src="Messenger_creation_193DEA5B-9CD6-4634-8DB4-F715FFF921EA.jpeg" alt="Logo ANEFF" class="logo-right">
+
+        <div class="watermark-fractal">
+            <svg width="700" height="700" viewBox="0 0 200 200" fill="none" stroke="#daa520" stroke-width="0.4">
                 <circle cx="100" cy="100" r="13" />
                 <circle cx="100" cy="100" r="21" />
                 <circle cx="100" cy="100" r="34" />
                 <circle cx="100" cy="100" r="55" />
                 <circle cx="100" cy="100" r="89" />
-                <!-- Intersecciones Áureas -->
-                <circle cx="100" cy="45" r="55" />
-                <circle cx="100" cy="155" r="55" />
-                <circle cx="52.3" cy="72.5" r="55" />
-                <circle cx="147.7" cy="127.5" r="55" />
-                <circle cx="52.3" cy="127.5" r="55" />
-                <circle cx="147.7" cy="72.5" r="55" />
+                <path d="M100,11 Q155,11 155,66 T100,121 T45,66 T100,11" transform="rotate(45 100 100)" />
+                <path d="M100,21 Q140,21 140,61 T100,101 T60,61 T100,21" />
             </svg>
         </div>
 
         <div class="content-wrapper">
             
-            <!-- Encabezado -->
-            <div class="text-center mb-8">
-                <div class="flex justify-center mb-4">
-                    <i data-lucide="infinity" class="w-10 h-10 text-gray-800"></i>
+            <div class="text-center mb-12">
+                <div class="flex justify-center mb-6">
+                    <i data-lucide="award" class="w-12 h-12 text-yellow-600 opacity-80"></i>
                 </div>
-                <h1 class="text-3xl font-bold tracking-widest text-gray-900 mb-2 uppercase">ANEFF</h1>
-                <p class="font-montserrat text-xs tracking-[0.3em] text-gray-500 uppercase">Comunicado Oficial • 15 de Mayo de 2026</p>
+                <h1 class="text-4xl font-bold tracking-[0.25em] text-gray-900 mb-3 uppercase">ANEFF</h1>
+                <p class="font-montserrat text-[10px] tracking-[0.5em] text-gray-400 uppercase">Comunicado Institucional • 15 de Mayo de 2026</p>
             </div>
 
-            <!-- Caja de Evolución de Eslogan -->
             <div class="slogan-box">
-                <p class="font-montserrat text-xs text-gray-500 uppercase tracking-widest mb-2">2021 | Fundación</p>
-                <p class="text-lg text-gray-700 italic mb-4">"El capital al servicio de la conciencia"</p>
-                
-                <p class="text-xl font-cinzel font-bold text-gray-900 mt-6">"Donde cada pulso de tu ser es el centro del universo™"</p>
+                <p class="font-montserrat text-[10px] text-gray-400 uppercase tracking-[0.3em] mb-3">Memoria Institucional 2021</p>
+                <p class="text-xl text-gray-600 italic">"El capital al servicio de la conciencia"</p>
+                <div class="h-px w-24 bg-yellow-600 my-6"></div>
+                <p class="text-2xl font-cinzel font-bold text-gray-900 leading-tight">"Donde cada pulso de tu ser es el centro del universo™"</p>
             </div>
 
-            <!-- Cuerpo del Mensaje -->
-            <div class="text-body space-y-6">
-                <p class="font-bold text-gray-900 font-cinzel text-xl text-center mb-8">Sincronía Educativa y Soberanía Tecnológica</p>
+            <div class="text-body space-y-8">
+                <p class="font-bold text-gray-900 font-cinzel text-2xl text-center mb-10 tracking-wide underline decoration-yellow-600/30 underline-offset-8">Sincronía Educativa y Soberanía Tecnológica</p>
                 
                 <p>
-                    Hoy celebramos 5 años de <span class="font-bold">ANEFF</span>. Nacimos en 2021 bajo la visión transformadora del Presidente <span class="highlight-gold">Andrés Manuel López Obrador</span>, y hoy reafirmamos nuestra voluntad de profundizar el cambio junto a la <span class="highlight-gold">Dra. Claudia Sheinbaum</span>. A través de alianzas estratégicas con las y los Diputados de Morena, nos sumamos al impulso de la Nueva Escuela Mexicana para convertir la ciencia y la tecnología en herramientas de justicia social.
+                    Hoy celebramos 5 años de <span class="font-bold">ANEFF</span>. Nacimos en 2021 bajo la visión transformadora del Presidente <span class="highlight-gold text-yellow-700">Andrés Manuel López Obrador</span>, y hoy reafirmamos nuestra voluntad de profundizar el cambio junto a la <span class="highlight-gold text-yellow-700">Dra. Claudia Sheinbaum</span>. A través de alianzas estratégicas con las y los Diputados de Morena, nos sumamos al impulso de la Nueva Escuela Mexicana para convertir la ciencia y la tecnología en herramientas de justicia social.
                 </p>
 
                 <p>
@@ -162,20 +184,25 @@
                     Nuestra gratitud a la <span class="highlight-gold font-bold">Institución Primaria Leonor Baqueriza</span>, testigo de este origen. Gracias al premio en efectivo entregado a la institución, hoy sus aulas cuentan con laptops y proyectores que fortalecen el proceso de enseñanza-aprendizaje.
                 </p>
 
-                <p>
-                    En las semanas venideras, realizaremos una visita oficial a la institución para la presentación de los avances del Proyecto ANEFF ante la dirección. Recorreremos los salones equipados para recoger la experiencia directa de los profesores, asegurando que la tecnología siga sirviendo al humanismo que nos define.
-                </p>
-
-                <p class="italic text-gray-700 mt-8 pb-4 border-b border-gray-200">
+                <p class="italic text-gray-600 mt-12 pt-8 border-t border-gray-100">
                     En este tiempo de transformación, nuestra felicitación es un reconocimiento a la profundidad de su labor. Celebramos a quienes educan en esta nueva era de mujeres empoderadas, donde la sensibilidad y la fuerza guían el destino de la nación. Extendemos un abrazo reflexivo a las maestras y maestros que, con visión humanista, sostienen el intelecto y el espíritu de México.
                 </p>
             </div>
 
-            <!-- Firma / Cierre -->
+            <!-- Sección de la Tabla de Posiciones / Resultados -->
+            <div class="ranking-section">
+                <h4 class="font-cinzel text-center text-gray-800 font-bold mb-6 tracking-widest text-sm uppercase">Resultados y Tabla de Posiciones</h4>
+                <img src="Screenshot_2025-11-25-13-36-50-25_c37d74246d9c81aa0bb824b57eaf7062.jpg" alt="Tabla de Posiciones ANEFF" class="ranking-image">
+            </div>
+
             <div class="footer-stamp">
                 <h3 class="font-cinzel text-xl font-bold text-gray-900 mb-2">¡Felicidades a las y los arquitectos de la conciencia!</h3>
-                <p class="font-montserrat text-sm tracking-[0.2em] text-gray-500 uppercase">Asociación Nacional de Educación Financiera Fractal</p>
-                <p class="font-montserrat text-xs text-gray-400 mt-2 tracking-widest">2021 — 2028</p>
+                <p class="font-montserrat text-xs tracking-[0.3em] text-gray-400 uppercase">Asociación Nacional de Educación Financiera Fractal</p>
+                <div class="mt-6 flex justify-center items-center gap-4 text-[10px] font-montserrat text-gray-300 tracking-[0.5em]">
+                    <span>EST. 2021</span>
+                    <span class="text-yellow-600">•</span>
+                    <span>PROY. 2028</span>
+                </div>
             </div>
 
         </div>
