@@ -3,59 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Comunicado ANEFF - Alta Definición</title>
+    <title>Comunicado ANEFF - Pantalla Completa</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Lora:ital,wght@0,400;0,500;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         body {
             background-color: #0a0f18; 
-            background-image: 
-                radial-gradient(circle at 50% 0%, rgba(218, 165, 32, 0.15), transparent 70%),
-                linear-gradient(rgba(218, 165, 32, 0.05) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(218, 165, 32, 0.05) 1px, transparent 1px);
-            background-size: 100% 100%, 61.8px 61.8px, 61.8px 61.8px; 
+            margin: 0;
+            padding: 0;
             display: flex;
             justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 3rem 2rem;
             font-family: 'Lora', serif;
         }
 
+        /* Contenedor ajustado a pantalla completa y ancho máximo */
         .document-container {
             background-color: #ffffff;
-            width: 100%;
-            max-width: 950px; /* Aumentado para dar aire al texto más grande */
-            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.6);
-            border-radius: 2px;
+            width: 100vw;
+            min-height: 100vh;
             position: relative;
             overflow: hidden;
-            border: 1px solid rgba(218, 165, 32, 0.2);
+            border: none;
         }
 
         .header-line {
-            height: 8px;
+            height: 12px;
             background: linear-gradient(90deg, #8b6b1d, #daa520, #8b6b1d);
             width: 100%;
         }
 
+        /* Logos con tamaño aumentado para visibilidad */
         .logo-left {
             position: absolute;
-            top: 30px;
-            left: 45px;
-            max-width: 280px; 
-            max-height: 130px;
+            top: 40px;
+            left: 5%;
+            width: 22vw;
+            max-width: 350px; 
             z-index: 30;
             object-fit: contain;
         }
 
         .logo-right {
             position: absolute;
-            top: 30px;
-            right: 45px;
-            max-width: 260px; 
-            max-height: 130px;
+            top: 40px;
+            right: 5%;
+            width: 20vw;
+            max-width: 320px; 
             z-index: 30;
             object-fit: contain;
         }
@@ -65,15 +59,15 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 90%;
-            height: auto;
-            opacity: 0.12; 
+            width: 85%;
+            opacity: 0.08; 
             pointer-events: none;
             z-index: 0;
         }
 
+        /* Padding aumentado para que el contenido respire en pantalla completa */
         .content-wrapper {
-            padding: 13rem 5.5rem 5rem 5.5rem; 
+            padding: 15rem 8% 8rem 8%; 
             position: relative;
             z-index: 10;
         }
@@ -82,17 +76,17 @@
         .font-montserrat { font-family: 'Montserrat', sans-serif; }
 
         .slogan-box {
-            border-left: 4px solid #daa520;
-            padding: 1.5rem 2rem;
-            margin: 2.5rem 0;
-            background: linear-gradient(90deg, rgba(218, 165, 32, 0.04) 0%, transparent 100%);
+            border-left: 6px solid #daa520;
+            padding: 2rem 3rem;
+            margin: 4rem 0;
+            background: linear-gradient(90deg, rgba(218, 165, 32, 0.06) 0%, transparent 100%);
         }
 
-        /* Aumento del cuerpo de texto para nitidez */
+        /* Tipografía extra grande para nitidez absoluta */
         .text-body {
             color: #1a1a1a;
             line-height: 1.8;
-            font-size: 1.25rem; 
+            font-size: 1.6rem; 
             text-align: justify;
         }
 
@@ -102,40 +96,42 @@
         }
         
         .footer-stamp {
-            border-top: 1px solid rgba(0,0,0,0.08);
-            margin-top: 3rem;
-            padding-top: 2rem;
+            border-top: 2px solid rgba(0,0,0,0.08);
+            margin-top: 5rem;
+            padding-top: 3rem;
             text-align: center;
         }
 
         .ranking-section {
-            margin-top: 3.5rem;
-            padding: 1rem;
+            margin-top: 5rem;
+            padding: 2rem;
             background: #fdfbf7;
-            border-radius: 4px;
+            border-radius: 8px;
             text-align: center;
         }
 
         .ranking-image {
             width: 100%;
-            max-width: 750px;
+            max-width: 1000px;
             margin: 0 auto;
             display: block;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-            border: 6px solid white;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+            border: 8px solid white;
         }
 
         .signature-box {
-            margin-top: 4rem;
+            margin-top: 6rem;
             text-align: center;
-            border-top: 2px solid #f0f0f0;
-            padding-top: 2rem;
+            border-top: 3px solid #f0f0f0;
+            padding-top: 3rem;
         }
 
+        /* Ajustes para móviles manteniendo el tamaño de letra legible */
         @media (max-width: 768px) {
-            .content-wrapper { padding: 12rem 2rem 3rem 2rem; }
-            .logo-left, .logo-right { max-width: 160px; }
-            .text-body { font-size: 1.1rem; }
+            .content-wrapper { padding: 14rem 5% 4rem 5%; }
+            .logo-left, .logo-right { top: 20px; width: 35%; }
+            .text-body { font-size: 1.3rem; }
+            .slogan-box { padding: 1.5rem; }
         }
     </style>
 </head>
@@ -148,31 +144,31 @@
         <img src="Messenger_creation_193DEA5B-9CD6-4634-8DB4-F715FFF921EA.jpeg" alt="Logo ANEFF" class="logo-right">
 
         <div class="watermark-golden">
-            <svg viewBox="0 0 233 144" fill="none" stroke="#daa520" stroke-width="1.2">
+            <svg viewBox="0 0 233 144" fill="none" stroke="#daa520" stroke-width="1">
                 <path d="M144,0 v144 h-144 v-144 h144 z" stroke-dasharray="2 2" opacity="0.4" />
                 <path d="M144,144 h89 v-89 h-89 z" stroke-dasharray="2 2" opacity="0.4" />
                 <path d="M233,55 v-55 h-55 z" stroke-dasharray="2 2" opacity="0.4" />
-                <path d="M0,0 C144,0 144,144 144,144 C144,144 233,144 233,55 C233,55 233,0 178,0 C178,0 144,0 144,34" stroke-width="2" />
+                <path d="M0,0 C144,0 144,144 144,144 C144,144 233,144 233,55 C233,55 233,0 178,0 C178,0 144,0 144,34" stroke-width="1.5" />
             </svg>
         </div>
 
         <div class="content-wrapper">
             
-            <div class="text-center mb-10">
-                <div class="flex justify-center mb-4">
-                    <i data-lucide="award" class="w-14 h-14 text-yellow-600 opacity-90"></i>
+            <div class="text-center mb-16">
+                <div class="flex justify-center mb-6">
+                    <i data-lucide="award" class="w-20 h-20 text-yellow-600 opacity-90"></i>
                 </div>
-                <h1 class="text-6xl font-bold tracking-[0.25em] text-gray-900 mb-2 uppercase">ANEFF</h1>
-                <p class="font-montserrat text-lg font-semibold tracking-[0.25em] text-yellow-700 uppercase mb-2">Asociación Nacional De Educación Financiera Fractal</p>
-                <p class="font-montserrat text-sm tracking-[0.4em] text-gray-400 uppercase">Documento Oficial • 15 de Mayo de 2026</p>
+                <h1 class="text-7xl font-bold tracking-[0.25em] text-gray-900 mb-4 uppercase">ANEFF</h1>
+                <p class="font-montserrat text-2xl font-semibold tracking-[0.2em] text-yellow-700 uppercase mb-3">Asociación Nacional De Educación Financiera Fractal</p>
+                <p class="font-montserrat text-lg tracking-[0.4em] text-gray-400 uppercase">Documento Oficial • 15 de Mayo de 2026</p>
             </div>
 
             <div class="slogan-box">
-                <p class="text-3xl font-cinzel font-bold text-gray-900 leading-tight">"Recordar es volver a pasar por el corazón el pulso del universo™"</p>
+                <p class="text-4xl font-cinzel font-bold text-gray-900 leading-tight">"Recordar es volver a pasar por el corazón el pulso del universo™"</p>
             </div>
 
-            <div class="text-body space-y-6">
-                <p class="font-bold text-gray-900 font-cinzel text-3xl text-center mb-10 tracking-wide underline decoration-yellow-600/30 underline-offset-8 uppercase">Raíces de Transformación: El Orgullo de Nuestro Origen</p>
+            <div class="text-body space-y-10">
+                <p class="font-bold text-gray-900 font-cinzel text-4xl text-center mb-14 tracking-wide underline decoration-yellow-600/30 underline-offset-8 uppercase">Raíces de Transformación: El Orgullo de Nuestro Origen</p>
                 
                 <p>
                     Con profunda emoción celebramos hoy el 5to aniversario de <span class="font-bold">ANEFF</span>. Miramos con orgullo aquel 2021 donde, inspirados por la visión transformadora del Presidente <span class="highlight-gold text-yellow-700">Andrés Manuel López Obrador</span>, sembramos una semilla de cambio que hoy florece junto a la <span class="highlight-gold text-yellow-700">Dra. Claudia Sheinbaum</span>. Lo que comenzó como un sueño de justicia social, hoy se consolida a través de la Nueva Escuela Mexicana, convirtiendo la ciencia y la tecnología en patrimonio del pueblo.
@@ -190,14 +186,14 @@
                     Próximamente, realizaremos una visita oficial a la institución para presentar los avances del Proyecto ANEFF. Será un honor recorrer nuevamente esos salones, ahora equipados, para recoger la experiencia de los profesores y reafirmar que nuestro corazón sigue donde todo comenzó.
                 </p>
 
-                <p class="italic text-gray-700 mt-12 pt-8 border-t border-gray-100 text-2xl leading-relaxed text-center font-medium">
+                <p class="italic text-gray-700 mt-16 pt-12 border-t border-gray-100 text-3xl leading-relaxed text-center font-medium">
                     "En este devenir histórico, honramos la profundidad de la enseñanza como el acto más puro de soberanía. Nuestra gratitud se extiende a los docentes, custodios del intelecto y la espiritualidad de la nación, cuya labor trasciende la instrucción para convertirse en un abrazo reflexivo a la mexicanidad."
                 </p>
             </div>
 
             <div class="signature-box">
-                <p class="font-cinzel text-3xl font-bold text-gray-900 tracking-wider">Jesús Antonio De León Reyes</p>
-                <p class="font-montserrat text-lg text-yellow-700 font-semibold tracking-[0.3em] uppercase">Presidente y Fundador</p>
+                <p class="font-cinzel text-4xl font-bold text-gray-900 tracking-wider">Jesús Antonio De León Reyes</p>
+                <p class="font-montserrat text-xl text-yellow-700 font-semibold tracking-[0.3em] uppercase">Presidente y Fundador</p>
             </div>
 
             <div class="ranking-section">
@@ -205,11 +201,11 @@
             </div>
 
             <div class="footer-stamp">
-                <h3 class="font-cinzel text-2xl font-bold text-gray-900 mb-2">¡5 años transformando la conciencia nacional!</h3>
-                <p class="font-montserrat text-sm tracking-[0.2em] text-gray-500 uppercase">Asociación Nacional de Educación Financiera Fractal™</p>
-                <div class="mt-6 flex justify-center items-center gap-6 text-sm font-bold font-montserrat text-gray-400 tracking-[0.5em]">
+                <h3 class="font-cinzel text-3xl font-bold text-gray-900 mb-3">¡5 años transformando la conciencia nacional!</h3>
+                <p class="font-montserrat text-lg tracking-[0.2em] text-gray-500 uppercase">Asociación Nacional de Educación Financiera Fractal™</p>
+                <div class="mt-8 flex justify-center items-center gap-10 text-xl font-bold font-montserrat text-gray-400 tracking-[0.5em]">
                     <span>2021</span>
-                    <span class="text-yellow-600 text-xl">•</span>
+                    <span class="text-yellow-600 text-3xl">•</span>
                     <span>2026</span>
                 </div>
             </div>
