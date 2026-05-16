@@ -9,12 +9,17 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         body {
-            background-color: #f4f4f5; /* Fondo gris muy claro para simular papel o escritorio */
+            background-color: #0a0f18; /* Fondo formal y profundo */
+            background-image: 
+                radial-gradient(circle at 50% 0%, rgba(218, 165, 32, 0.12), transparent 60%),
+                linear-gradient(rgba(218, 165, 32, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(218, 165, 32, 0.04) 1px, transparent 1px);
+            background-size: 100% 100%, 61.8px 61.8px, 61.8px 61.8px; /* Espaciado fractal áureo */
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            padding: 2rem;
+            padding: 3rem 2rem;
             font-family: 'Lora', serif;
         }
 
@@ -22,7 +27,7 @@
             background-color: #ffffff;
             width: 100%;
             max-width: 800px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
             border-radius: 4px;
             position: relative;
             overflow: hidden;
@@ -35,13 +40,13 @@
             width: 100%;
         }
 
-        /* Marca de agua sutil de ANEFF en el fondo */
+        /* Geometría Fractal de ANEFF en el fondo */
         .watermark {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            opacity: 0.03;
+            opacity: 0.04;
             pointer-events: none;
             z-index: 0;
             display: flex;
@@ -103,7 +108,23 @@
         <div class="header-line"></div>
         
         <div class="watermark">
-            <i data-lucide="infinity" style="width: 400px; height: 400px; color: #000;"></i>
+            <!-- Patrón Fractal / Flor de la Vida -->
+            <svg width="600" height="600" viewBox="0 0 200 200" fill="none" stroke="#b8860b" stroke-width="0.6">
+                <!-- Sucesión de Fibonacci en radios -->
+                <circle cx="100" cy="100" r="8" />
+                <circle cx="100" cy="100" r="13" />
+                <circle cx="100" cy="100" r="21" />
+                <circle cx="100" cy="100" r="34" />
+                <circle cx="100" cy="100" r="55" />
+                <circle cx="100" cy="100" r="89" />
+                <!-- Intersecciones Áureas -->
+                <circle cx="100" cy="45" r="55" />
+                <circle cx="100" cy="155" r="55" />
+                <circle cx="52.3" cy="72.5" r="55" />
+                <circle cx="147.7" cy="127.5" r="55" />
+                <circle cx="52.3" cy="127.5" r="55" />
+                <circle cx="147.7" cy="72.5" r="55" />
+            </svg>
         </div>
 
         <div class="content-wrapper">
@@ -122,9 +143,7 @@
                 <p class="font-montserrat text-xs text-gray-500 uppercase tracking-widest mb-2">2021 | Fundación</p>
                 <p class="text-lg text-gray-700 italic mb-4">"El capital al servicio de la conciencia"</p>
                 
-                <p class="font-montserrat text-xs text-gray-500 uppercase tracking-widest mb-2 mt-6">2026 | Horizonte de Innovación</p>
-                <p class="text-xl font-cinzel font-bold text-gray-900">"Donde cada pulso de tu ser es el centro del universo™"</p>
-                <p class="font-montserrat text-[10px] text-gray-400 mt-1 italic">Registro de marca en proceso.</p>
+                <p class="text-xl font-cinzel font-bold text-gray-900 mt-6">"Donde cada pulso de tu ser es el centro del universo™"</p>
             </div>
 
             <!-- Cuerpo del Mensaje -->
@@ -136,22 +155,18 @@
                 </p>
 
                 <p>
-                    <span class="font-bold font-montserrat text-sm tracking-wider uppercase">El Horizonte ANEFF y la Vanguardia de la SEP:</span><br>
                     En total sintonía con los ejes de la SEP sobre Ciencia, Tecnología e Innovación, ANEFF proyecta un nuevo estándar: la integración de la Criptoeconomía y la Tecnología Fractal como pilares de autonomía institucional. Buscamos que el valor generado en nuestras aulas se traduzca en soberanía digital, protegiendo el legado docente y el talento de los estudiantes mexicanos.
                 </p>
 
                 <p>
-                    <span class="font-bold font-montserrat text-sm tracking-wider uppercase">Impacto Real:</span><br>
                     Nuestra gratitud a la <span class="highlight-gold font-bold">Institución Primaria Leonor Baqueriza</span>, testigo de este origen. Gracias al premio en efectivo entregado a la institución, hoy sus aulas cuentan con laptops y proyectores que fortalecen el proceso de enseñanza-aprendizaje.
                 </p>
 
                 <p>
-                    <span class="font-bold font-montserrat text-sm tracking-wider uppercase">Próximas Acciones:</span><br>
                     En las semanas venideras, realizaremos una visita oficial a la institución para la presentación de los avances del Proyecto ANEFF ante la dirección. Recorreremos los salones equipados para recoger la experiencia directa de los profesores, asegurando que la tecnología siga sirviendo al humanismo que nos define.
                 </p>
 
                 <p class="italic text-gray-700 mt-8 pb-4 border-b border-gray-200">
-                    <span class="font-bold font-montserrat text-sm tracking-wider uppercase not-italic">Reflexión en el Día del Maestro:</span><br><br>
                     En este tiempo de transformación, nuestra felicitación es un reconocimiento a la profundidad de su labor. Celebramos a quienes educan en esta nueva era de mujeres empoderadas, donde la sensibilidad y la fuerza guían el destino de la nación. Extendemos un abrazo reflexivo a las maestras y maestros que, con visión humanista, sostienen el intelecto y el espíritu de México.
                 </p>
             </div>
@@ -160,7 +175,7 @@
             <div class="footer-stamp">
                 <h3 class="font-cinzel text-xl font-bold text-gray-900 mb-2">¡Felicidades a las y los arquitectos de la conciencia!</h3>
                 <p class="font-montserrat text-sm tracking-[0.2em] text-gray-500 uppercase">Asociación Nacional de Educación Financiera Fractal</p>
-                <p class="font-montserrat text-xs text-gray-400 mt-2 tracking-widest">2021 — 2026</p>
+                <p class="font-montserrat text-xs text-gray-400 mt-2 tracking-widest">2021 — 2028</p>
             </div>
 
         </div>
