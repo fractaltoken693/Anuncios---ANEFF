@@ -26,7 +26,7 @@
         .document-container {
             background-color: #ffffff;
             width: 100%;
-            max-width: 850px;
+            max-width: 900px; /* Un poco más ancho para dar espacio a los logos */
             box-shadow: 0 40px 80px rgba(0, 0, 0, 0.5);
             border-radius: 2px;
             position: relative;
@@ -40,13 +40,13 @@
             width: 100%;
         }
 
-        /* Logos con nombres de archivo actualizados */
+        /* Logos con tamaño aumentado según solicitud */
         .logo-left {
             position: absolute;
             top: 40px;
             left: 50px;
-            max-width: 140px;
-            max-height: 80px;
+            max-width: 220px; /* Aumentado sustancialmente */
+            max-height: 120px;
             z-index: 30;
             object-fit: contain;
         }
@@ -55,8 +55,8 @@
             position: absolute;
             top: 40px;
             right: 50px;
-            max-width: 120px;
-            max-height: 80px;
+            max-width: 200px; /* Aumentado sustancialmente */
+            max-height: 120px;
             z-index: 30;
             object-fit: contain;
         }
@@ -72,7 +72,7 @@
         }
 
         .content-wrapper {
-            padding: 9rem 5.5rem 5rem 5.5rem;
+            padding: 12rem 5.5rem 5rem 5.5rem; /* Más padding superior para no chocar con los logos grandes */
             position: relative;
             z-index: 10;
         }
@@ -106,27 +106,34 @@
             text-align: center;
         }
 
-        /* Sección de Tabla de Posiciones */
         .ranking-section {
             margin-top: 4rem;
-            padding: 2rem;
+            padding: 2.5rem;
             background: #fdfbf7;
-            border: 1px solid #eee;
+            border: 1px solid rgba(218, 165, 32, 0.1);
             border-radius: 4px;
+            text-align: center;
         }
 
         .ranking-image {
             width: 100%;
-            max-width: 600px;
+            max-width: 650px;
             margin: 0 auto;
             display: block;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            border: 4px solid white;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+            border: 5px solid white;
+            border-radius: 4px;
         }
 
         @media (max-width: 768px) {
-            .content-wrapper { padding: 8rem 2rem 3rem 2rem; }
-            .logo-left, .logo-right { max-width: 80px; top: 25px; }
+            .content-wrapper { padding: 10rem 2rem 3rem 2rem; }
+            .logo-left, .logo-right { 
+                max-width: 130px; 
+                max-height: 80px;
+                top: 25px; 
+            }
+            .logo-left { left: 20px; }
+            .logo-right { right: 20px; }
             .text-body { font-size: 1rem; }
         }
     </style>
@@ -136,7 +143,7 @@
     <div class="document-container">
         <div class="header-line"></div>
         
-        <!-- Imágenes vinculadas a tus archivos subidos -->
+        <!-- Logos Principales (Tamaño Agrandado) -->
         <img src="ANEFF SLOGAN.jpg" alt="Logo SEP/Gob" class="logo-left">
         <img src="Messenger_creation_193DEA5B-9CD6-4634-8DB4-F715FFF921EA.jpeg" alt="Logo ANEFF" class="logo-right">
 
@@ -156,10 +163,12 @@
             
             <div class="text-center mb-12">
                 <div class="flex justify-center mb-6">
-                    <i data-lucide="award" class="w-12 h-12 text-yellow-600 opacity-80"></i>
+                    <i data-lucide="award" class="w-14 h-14 text-yellow-600 opacity-90"></i>
                 </div>
-                <h1 class="text-4xl font-bold tracking-[0.25em] text-gray-900 mb-3 uppercase">ANEFF</h1>
-                <p class="font-montserrat text-[10px] tracking-[0.5em] text-gray-400 uppercase">Comunicado Institucional • 15 de Mayo de 2026</p>
+                <h1 class="text-5xl font-bold tracking-[0.2em] text-gray-900 mb-4 uppercase">ANEFF</h1>
+                <!-- Título actualizado según solicitud -->
+                <p class="font-montserrat text-sm font-semibold tracking-[0.3em] text-yellow-700 uppercase mb-2">Asociación Nacional De Educación Financiera Fractal</p>
+                <p class="font-montserrat text-[10px] tracking-[0.5em] text-gray-400 uppercase">Documento Oficial • 15 de Mayo de 2026</p>
             </div>
 
             <div class="slogan-box">
@@ -189,10 +198,11 @@
                 </p>
             </div>
 
-            <!-- Sección de la Tabla de Posiciones / Resultados -->
+            <!-- Sección de la Tabla de Posiciones -->
             <div class="ranking-section">
-                <h4 class="font-cinzel text-center text-gray-800 font-bold mb-6 tracking-widest text-sm uppercase">Resultados y Tabla de Posiciones</h4>
+                <h4 class="font-cinzel text-gray-800 font-bold mb-8 tracking-widest text-base uppercase">Cuadro de Méritos y Tabla de Posiciones</h4>
                 <img src="Screenshot_2025-11-25-13-36-50-25_c37d74246d9c81aa0bb824b57eaf7062.jpg" alt="Tabla de Posiciones ANEFF" class="ranking-image">
+                <p class="font-montserrat text-[9px] text-gray-400 mt-6 tracking-widest uppercase italic">Referencia de Desempeño Institucional - Periodo Vigente</p>
             </div>
 
             <div class="footer-stamp">
