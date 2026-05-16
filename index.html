@@ -19,15 +19,15 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            padding: 4rem 2rem;
+            padding: 2rem;
             font-family: 'Lora', serif;
         }
 
         .document-container {
             background-color: #ffffff;
             width: 100%;
-            max-width: 900px; /* Un poco más ancho para dar espacio a los logos */
-            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.5);
+            max-width: 850px;
+            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.6);
             border-radius: 2px;
             position: relative;
             overflow: hidden;
@@ -35,44 +35,47 @@
         }
 
         .header-line {
-            height: 8px;
+            height: 6px;
             background: linear-gradient(90deg, #8b6b1d, #daa520, #8b6b1d);
             width: 100%;
         }
 
-        /* Logos con tamaño aumentado según solicitud */
+        /* Logos con tamaño optimizado */
         .logo-left {
             position: absolute;
-            top: 40px;
-            left: 50px;
-            max-width: 220px; /* Aumentado sustancialmente */
-            max-height: 120px;
+            top: 30px;
+            left: 40px;
+            max-width: 180px;
+            max-height: 90px;
             z-index: 30;
             object-fit: contain;
         }
 
         .logo-right {
             position: absolute;
-            top: 40px;
-            right: 50px;
-            max-width: 200px; /* Aumentado sustancialmente */
-            max-height: 120px;
+            top: 30px;
+            right: 40px;
+            max-width: 160px;
+            max-height: 90px;
             z-index: 30;
             object-fit: contain;
         }
 
-        .watermark-fractal {
+        /* Marca de agua: Proporción Áurea / Espiral de Fibonacci */
+        .watermark-golden {
             position: absolute;
-            top: 50%;
+            top: 45%;
             left: 50%;
             transform: translate(-50%, -50%);
-            opacity: 0.06;
+            width: 90%;
+            height: auto;
+            opacity: 0.05;
             pointer-events: none;
             z-index: 0;
         }
 
         .content-wrapper {
-            padding: 12rem 5.5rem 5rem 5.5rem; /* Más padding superior para no chocar con los logos grandes */
+            padding: 10rem 4.5rem 3.5rem 4.5rem; /* Compactado */
             position: relative;
             z-index: 10;
         }
@@ -81,16 +84,16 @@
         .font-montserrat { font-family: 'Montserrat', sans-serif; }
 
         .slogan-box {
-            border-left: 2px solid #daa520;
-            padding: 1.5rem 2rem;
-            margin: 3rem 0;
-            background: linear-gradient(90deg, rgba(218, 165, 32, 0.03) 0%, transparent 100%);
+            border-left: 3px solid #daa520;
+            padding: 1rem 1.5rem;
+            margin: 2rem 0;
+            background: linear-gradient(90deg, rgba(218, 165, 32, 0.04) 0%, transparent 100%);
         }
 
         .text-body {
             color: #1a1a1a;
-            line-height: 1.9;
-            font-size: 1.1rem;
+            line-height: 1.75;
+            font-size: 1.05rem;
             text-align: justify;
         }
 
@@ -101,40 +104,36 @@
         
         .footer-stamp {
             border-top: 1px solid rgba(0,0,0,0.06);
-            margin-top: 4rem;
-            padding-top: 3rem;
+            margin-top: 2.5rem;
+            padding-top: 2rem;
             text-align: center;
         }
 
         .ranking-section {
-            margin-top: 4rem;
-            padding: 2.5rem;
+            margin-top: 2.5rem;
+            padding: 1.5rem;
             background: #fdfbf7;
-            border: 1px solid rgba(218, 165, 32, 0.1);
+            border: 1px solid rgba(218, 165, 32, 0.08);
             border-radius: 4px;
             text-align: center;
         }
 
         .ranking-image {
             width: 100%;
-            max-width: 650px;
+            max-width: 580px;
             margin: 0 auto;
             display: block;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.12);
-            border: 5px solid white;
-            border-radius: 4px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            border: 4px solid white;
         }
 
         @media (max-width: 768px) {
-            .content-wrapper { padding: 10rem 2rem 3rem 2rem; }
+            .content-wrapper { padding: 9rem 1.5rem 2rem 1.5rem; }
             .logo-left, .logo-right { 
-                max-width: 130px; 
-                max-height: 80px;
-                top: 25px; 
+                max-width: 110px; 
+                top: 20px; 
             }
-            .logo-left { left: 20px; }
-            .logo-right { right: 20px; }
-            .text-body { font-size: 1rem; }
+            .text-body { font-size: 0.95rem; line-height: 1.6; }
         }
     </style>
 </head>
@@ -143,72 +142,70 @@
     <div class="document-container">
         <div class="header-line"></div>
         
-        <!-- Logos Principales (Tamaño Agrandado) -->
         <img src="ANEFF SLOGAN.jpg" alt="Logo SEP/Gob" class="logo-left">
         <img src="Messenger_creation_193DEA5B-9CD6-4634-8DB4-F715FFF921EA.jpeg" alt="Logo ANEFF" class="logo-right">
 
-        <div class="watermark-fractal">
-            <svg width="700" height="700" viewBox="0 0 200 200" fill="none" stroke="#daa520" stroke-width="0.4">
-                <circle cx="100" cy="100" r="13" />
-                <circle cx="100" cy="100" r="21" />
-                <circle cx="100" cy="100" r="34" />
-                <circle cx="100" cy="100" r="55" />
-                <circle cx="100" cy="100" r="89" />
-                <path d="M100,11 Q155,11 155,66 T100,121 T45,66 T100,11" transform="rotate(45 100 100)" />
-                <path d="M100,21 Q140,21 140,61 T100,101 T60,61 T100,21" />
+        <!-- SVG de la Espiral Áurea / Fibonacci -->
+        <div class="watermark-golden">
+            <svg viewBox="0 0 233 144" fill="none" stroke="#daa520" stroke-width="0.5">
+                <path d="M144,0 v144 h-144 v-144 h144 z" stroke-dasharray="2 2" />
+                <path d="M144,144 h89 v-89 h-89 z" stroke-dasharray="2 2" />
+                <path d="M233,55 v-55 h-55 z" stroke-dasharray="2 2" />
+                <!-- Espiral aproximada de Fibonacci -->
+                <path d="M0,0 C144,0 144,144 144,144 C144,144 233,144 233,55 C233,55 233,0 178,0 C178,0 144,0 144,34" stroke-width="1" />
+                <circle cx="144" cy="0" r="1" fill="#daa520" />
             </svg>
         </div>
 
         <div class="content-wrapper">
             
-            <div class="text-center mb-12">
-                <div class="flex justify-center mb-6">
-                    <i data-lucide="award" class="w-14 h-14 text-yellow-600 opacity-90"></i>
+            <div class="text-center mb-8">
+                <div class="flex justify-center mb-4">
+                    <i data-lucide="award" class="w-12 h-12 text-yellow-600 opacity-90"></i>
                 </div>
-                <h1 class="text-5xl font-bold tracking-[0.2em] text-gray-900 mb-4 uppercase">ANEFF</h1>
-                <!-- Título actualizado según solicitud -->
-                <p class="font-montserrat text-sm font-semibold tracking-[0.3em] text-yellow-700 uppercase mb-2">Asociación Nacional De Educación Financiera Fractal</p>
-                <p class="font-montserrat text-[10px] tracking-[0.5em] text-gray-400 uppercase">Documento Oficial • 15 de Mayo de 2026</p>
+                <h1 class="text-4xl font-bold tracking-[0.2em] text-gray-900 mb-2 uppercase">ANEFF</h1>
+                <p class="font-montserrat text-xs font-semibold tracking-[0.25em] text-yellow-700 uppercase mb-1">Asociación Nacional De Educación Financiera Fractal</p>
+                <p class="font-montserrat text-[9px] tracking-[0.4em] text-gray-400 uppercase">Documento Oficial • 15 de Mayo de 2026</p>
             </div>
 
             <div class="slogan-box">
-                <p class="font-montserrat text-[10px] text-gray-400 uppercase tracking-[0.3em] mb-3">Memoria Institucional 2021</p>
-                <p class="text-xl text-gray-600 italic">"El capital al servicio de la conciencia"</p>
-                <div class="h-px w-24 bg-yellow-600 my-6"></div>
-                <p class="text-2xl font-cinzel font-bold text-gray-900 leading-tight">"Donde cada pulso de tu ser es el centro del universo™"</p>
+                <p class="font-montserrat text-[9px] text-gray-400 uppercase tracking-[0.3em] mb-2">Memoria Institucional 2021</p>
+                <p class="text-lg text-gray-600 italic">"El capital al servicio de la conciencia"</p>
+                <div class="h-px w-20 bg-yellow-600 my-4"></div>
+                <p class="text-xl font-cinzel font-bold text-gray-900 leading-tight">"Donde cada pulso de tu ser es el centro del universo™"</p>
             </div>
 
-            <div class="text-body space-y-8">
-                <p class="font-bold text-gray-900 font-cinzel text-2xl text-center mb-10 tracking-wide underline decoration-yellow-600/30 underline-offset-8">Sincronía Educativa y Soberanía Tecnológica</p>
+            <div class="text-body space-y-5">
+                <!-- Título menos técnico solicitado -->
+                <p class="font-bold text-gray-900 font-cinzel text-xl text-center mb-6 tracking-wide underline decoration-yellow-600/30 underline-offset-8 uppercase">Un Legado de Innovación y Bienestar Común</p>
                 
                 <p>
-                    Hoy celebramos 5 años de <span class="font-bold">ANEFF</span>. Nacimos en 2021 bajo la visión transformadora del Presidente <span class="highlight-gold text-yellow-700">Andrés Manuel López Obrador</span>, y hoy reafirmamos nuestra voluntad de profundizar el cambio junto a la <span class="highlight-gold text-yellow-700">Dra. Claudia Sheinbaum</span>. A través de alianzas estratégicas con las y los Diputados de Morena, nos sumamos al impulso de la Nueva Escuela Mexicana para convertir la ciencia y la tecnología en herramientas de justicia social.
+                    Hoy celebramos 5 años de <span class="font-bold">ANEFF</span>. Nacimos en 2021 bajo la visión transformadora del Presidente <span class="highlight-gold text-yellow-700">Andrés Manuel López Obrador</span>, y hoy reafirmamos nuestra voluntad de profundizar el cambio junto a la <span class="highlight-gold text-yellow-700">Dra. Claudia Sheinbaum</span>. En alianza con legisladores de Morena, impulsamos la Nueva Escuela Mexicana para que la ciencia sea una herramienta real de justicia social.
                 </p>
 
                 <p>
-                    En total sintonía con los ejes de la SEP sobre Ciencia, Tecnología e Innovación, ANEFF proyecta un nuevo estándar: la integración de la Criptoeconomía y la Tecnología Fractal como pilares de autonomía institucional. Buscamos que el valor generado en nuestras aulas se traduzca en soberanía digital, protegiendo el legado docente y el talento de los estudiantes mexicanos.
+                    En sintonía con la SEP, ANEFF proyecta un nuevo estándar: la integración de la Criptoeconomía y la Tecnología Fractal para fortalecer la autonomía de nuestras instituciones. Buscamos que el conocimiento generado en las aulas se traduzca en una verdadera soberanía digital que proteja el talento de México.
                 </p>
 
                 <p>
-                    Nuestra gratitud a la <span class="highlight-gold font-bold">Institución Primaria Leonor Baqueriza</span>, testigo de este origen. Gracias al premio en efectivo entregado a la institución, hoy sus aulas cuentan con laptops y proyectores que fortalecen el proceso de enseñanza-aprendizaje.
+                    Agradecemos a la <span class="highlight-gold font-bold">Institución Primaria Leonor Baqueriza</span> por ser cuna de este proyecto. Gracias al apoyo entregado, hoy sus aulas cuentan con mejores herramientas tecnológicas para el desarrollo de la niñez.
                 </p>
 
-                <p class="italic text-gray-600 mt-12 pt-8 border-t border-gray-100">
-                    En este tiempo de transformación, nuestra felicitación es un reconocimiento a la profundidad de su labor. Celebramos a quienes educan en esta nueva era de mujeres empoderadas, donde la sensibilidad y la fuerza guían el destino de la nación. Extendemos un abrazo reflexivo a las maestras y maestros que, con visión humanista, sostienen el intelecto y el espíritu de México.
+                <p class="italic text-gray-500 mt-6 pt-4 border-t border-gray-100 text-base leading-relaxed">
+                    Celebramos a quienes educan en esta era de transformación, donde la sensibilidad y la fuerza guían el destino de la nación. Un abrazo reflexivo a las maestras y maestros que sostienen el espíritu de México.
                 </p>
             </div>
 
             <!-- Sección de la Tabla de Posiciones -->
             <div class="ranking-section">
-                <h4 class="font-cinzel text-gray-800 font-bold mb-8 tracking-widest text-base uppercase">Cuadro de Méritos y Tabla de Posiciones</h4>
+                <h4 class="font-cinzel text-gray-700 font-bold mb-4 tracking-widest text-sm uppercase">Cuadro de Méritos Institucionales</h4>
                 <img src="Screenshot_2025-11-25-13-36-50-25_c37d74246d9c81aa0bb824b57eaf7062.jpg" alt="Tabla de Posiciones ANEFF" class="ranking-image">
-                <p class="font-montserrat text-[9px] text-gray-400 mt-6 tracking-widest uppercase italic">Referencia de Desempeño Institucional - Periodo Vigente</p>
             </div>
 
             <div class="footer-stamp">
-                <h3 class="font-cinzel text-xl font-bold text-gray-900 mb-2">¡Felicidades a las y los arquitectos de la conciencia!</h3>
-                <p class="font-montserrat text-xs tracking-[0.3em] text-gray-400 uppercase">Asociación Nacional de Educación Financiera Fractal</p>
-                <div class="mt-6 flex justify-center items-center gap-4 text-[10px] font-montserrat text-gray-300 tracking-[0.5em]">
+                <h3 class="font-cinzel text-lg font-bold text-gray-900 mb-1">¡Felicidades a las y los arquitectos de la conciencia!</h3>
+                <p class="font-montserrat text-[10px] tracking-[0.2em] text-gray-400 uppercase">Asociación Nacional de Educación Financiera Fractal</p>
+                <div class="mt-4 flex justify-center items-center gap-4 text-[9px] font-montserrat text-gray-300 tracking-[0.4em]">
                     <span>EST. 2021</span>
                     <span class="text-yellow-600">•</span>
                     <span>PROY. 2028</span>
