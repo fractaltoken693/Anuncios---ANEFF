@@ -3,231 +3,325 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ANEFF | Emisión de Certificados de Élite</title>
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- React y Babel -->
-    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <!-- Fuentes Premium -->
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Orbitron:wght@400;700;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <title>ANEFF | Terminal de Soberanía Tecnológica</title>
     <style>
-        body { background-color: #020617; color: #e2e8f0; font-family: 'Cinzel', serif; }
-        .font-orbitron { font-family: 'Orbitron', sans-serif; }
-        .font-playfair { font-family: 'Playfair Display', serif; }
-        
-        /* Efecto Metálico Dorado */
-        .text-gold {
-            background: linear-gradient(to bottom, #cfc09f 22%, #634f2c 24%, #cfc09f 26%, #cfc09f 27%, #ffecb3 40%, #3a2c0f 78%); 
-            -webkit-background-clip: text; 
-            -webkit-text-fill-color: transparent; 
-            color: #fff; 
+        :root {
+            --color-guinda: #6A1B29;
+            --color-oro: #BC955C;
+            --color-verde: #13322B;
+            --color-bg: #090B0E;
+            --color-terminal-bg: #11141A;
+            --color-text: #E0E6ED;
+            --color-accent: #00FFCC;
         }
-        .border-gold {
-            border-image: linear-gradient(to bottom, #cfc09f, #ffecb3, #3a2c0f) 1;
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Courier New', Courier, monospace;
         }
-        
-        /* Fondo Fractal Sutil */
-        .fractal-bg {
-            background-color: #000;
-            background-image: 
-                radial-gradient(circle at 50% 50%, rgba(10, 50, 60, 0.5) 0%, transparent 60%),
-                repeating-linear-gradient(45deg, rgba(255,215,0,0.03) 0px, rgba(255,215,0,0.03) 1px, transparent 1px, transparent 20px),
-                repeating-linear-gradient(-45deg, rgba(0,255,255,0.03) 0px, rgba(0,255,255,0.03) 1px, transparent 1px, transparent 20px);
+
+        body {
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* Encabezado Institucional */
+        header {
+            background: linear-gradient(135deg, var(--color-guinda), var(--color-verde));
+            border-bottom: 3px solid var(--color-oro);
+            padding: 15px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+            z-index: 10;
+        }
+
+        .header-title h1 {
+            color: #FFFFFF;
+            font-size: 1.4rem;
+            letter-spacing: 2px;
+        }
+
+        .header-title p {
+            color: var(--color-oro);
+            font-size: 0.85rem;
+            margin-top: 4px;
+        }
+
+        .header-badge {
+            text-align: right;
+            border-left: 2px solid var(--color-oro);
+            padding-left: 15px;
+        }
+
+        .header-badge .year {
+            color: #FFFFFF;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        /* Contenedor Principal */
+        .main-container {
+            flex: 1;
+            display: flex;
+            height: calc(100vh - 75px);
+        }
+
+        /* Panel Izquierdo: Canvas Fractal */
+        .canvas-panel {
+            flex: 1;
+            position: relative;
+            background: radial-gradient(circle at center, #11151D 0%, #05070A 100%);
+            border-right: 1px solid rgba(188, 149, 92, 0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        canvas {
+            width: 100%;
+            height: 100%;
+        }
+
+        .canvas-overlay {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(9, 11, 14, 0.8);
+            border: 1px solid var(--color-oro);
+            padding: 10px;
+            font-size: 0.75rem;
+            pointer-events: none;
+            border-radius: 4px;
+        }
+
+        /* Panel Derecho: Terminal */
+        .terminal-panel {
+            width: 55%;
+            background-color: var(--color-terminal-bg);
+            display: flex;
+            flex-direction: column;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .terminal-header {
+            background-color: rgba(0, 0, 0, 0.3);
+            padding: 10px 20px;
+            border-bottom: 1px solid rgba(188, 149, 92, 0.3);
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: var(--color-oro);
+        }
+
+        .terminal-body {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .terminal-output {
+            white-space: pre-wrap;
+            margin-bottom: 15px;
+        }
+
+        .terminal-line {
+            margin-bottom: 10px;
+        }
+
+        .command-prompt {
+            display: flex;
+            align-items: center;
+            background-color: rgba(0,0,0,0.2);
+            padding: 10px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .prompt-symbol {
+            color: var(--color-accent);
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        .terminal-input {
+            flex: 1;
+            background: none;
+            border: none;
+            color: #FFFFFF;
+            font-family: inherit;
+            font-size: 0.9rem;
+            outline: none;
+        }
+
+        /* Estilos de Texto dentro de la Terminal */
+        .text-gold { color: var(--color-oro); }
+        .text-accent { color: var(--color-accent); }
+        .text-guinda { color: #E67E22; }
+        .highlight { background-color: rgba(188, 149, 92, 0.15); padding: 2px 5px; border-radius: 3px; }
+
+        @media (max-width: 900px) {
+            .main-container { flex-direction: column; }
+            .terminal-panel { width: 100%; height: 60%; }
+            .canvas-panel { height: 40%; }
         }
     </style>
 </head>
 <body>
-    <div id="root"></div>
 
-    <script type="text/babel">
-        const { useState, useEffect, useRef } = React;
+    <header>
+        <div class="header-title">
+            <h1>ANEFF | Ecosistema de Soberanía Tecnológica</h1>
+            <p>"Donde cada pulso de tu ser es el centro del universo™"</p>
+        </div>
+        <div class="header-badge">
+            <div class="year">Horizonte 2026</div>
+            <div style="font-size: 0.7rem; color: #ccc; margin-top: 2px;">5° Aniversario (2021-2026)</div>
+        </div>
+    </header>
 
-        // Alfabeto Griego Completo (24 Letras)
-        const GREEK_ALPHABET = [
-            { name: 'Alpha', symbol: 'Α' }, { name: 'Beta', symbol: 'Β' }, { name: 'Gamma', symbol: 'Γ' },
-            { name: 'Delta', symbol: 'Δ' }, { name: 'Epsilon', symbol: 'Ε' }, { name: 'Zeta', symbol: 'Ζ' },
-            { name: 'Eta', symbol: 'Η' }, { name: 'Theta', symbol: 'Θ' }, { name: 'Iota', symbol: 'Ι' },
-            { name: 'Kappa', symbol: 'Κ' }, { name: 'Lambda', symbol: 'Λ' }, { name: 'Mu', symbol: 'Μ' },
-            { name: 'Nu', symbol: 'Ν' }, { name: 'Xi', symbol: 'Ξ' }, { name: 'Omicron', symbol: 'Ο' },
-            { name: 'Pi', symbol: 'Π' }, { name: 'Rho', symbol: 'Ρ' }, { name: 'Sigma', symbol: 'Σ' },
-            { name: 'Tau', symbol: 'Τ' }, { name: 'Upsilon', symbol: 'Υ' }, { name: 'Phi', symbol: 'Φ' },
-            { name: 'Chi', symbol: 'Χ' }, { name: 'Psi', symbol: 'Ψ' }, { name: 'Omega', symbol: 'Ω' }
-        ];
+    <div class="main-container">
+        
+        <div class="canvas-panel">
+            <canvas id="fractalCanvas"></canvas>
+            <div class="canvas-overlay">
+                <div>SISTEMA: Iterativo Autorreplicable</div>
+                <div>PROPORCIÓN: Áurea (Φ ≈ 1.618034)</div>
+                <div>ESTADO: Emitiendo Nodos en Sincronía</div>
+            </div>
+        </div>
 
-        const App = () => {
-            const [memberData, setMemberData] = useState({
-                name: 'NOMBRE DEL CIUDADANO',
-                nodeNumber: 1,
-                date: new Date().toLocaleDateString('es-MX', { day: 'numeric', month: 'long', year: 'numeric' })
-            });
+        <div class="terminal-panel">
+            <div class="terminal-header">
+                <span>CONSOLA NODO RAÍZ v2.0.26-PROD</span>
+                <span>15 de Mayo - Conectado</span>
+            </div>
+            <div class="terminal-body" id="terminalBody">
+                <div class="terminal-output" id="terminalOutput"></div>
+            </div>
+            <div class="command-prompt">
+                <span class="prompt-symbol">aneff@root_nodo:~$</span>
+                <input type="text" class="terminal-input" id="terminalInput" placeholder="Escribe 'help', 'principios', 'impacto' o 'maestros'..." autofocus>
+            </div>
+        </div>
+    </div>
 
-            const [greekData, setGreekData] = useState({ name: 'Alpha', symbol: 'Α', subIndex: 1 });
-            const [nodeHash, setNodeHash] = useState('');
+    <script>
+        // --- LÓGICA DEL CANVAS FRACTAL ---
+        const canvas = document.getElementById('fractalCanvas');
+        const ctx = canvas.getContext('2d');
 
-            // Lógica de Asignación Automática (1-72)
-            useEffect(() => {
-                let num = parseInt(memberData.nodeNumber);
-                // Limitar rango
-                if (num < 1) num = 1;
-                if (num > 72) num = 72;
+        function resizeCanvas() {
+            canvas.width = canvas.parentElement.clientWidth;
+            canvas.height = canvas.parentElement.clientHeight;
+            drawFractal();
+        }
 
-                if (num > 0 && num <= 72) {
-                    const greekIndex = Math.floor((num - 1) / 3); // 0-23
-                    const subIndex = ((num - 1) % 3) + 1; // 1-3
-                    
-                    if (GREEK_ALPHABET[greekIndex]) {
-                        setGreekData({
-                            name: GREEK_ALPHABET[greekIndex].name,
-                            symbol: GREEK_ALPHABET[greekIndex].symbol,
-                            subIndex: subIndex
-                        });
+        window.addEventListener('resize', resizeCanvas);
 
-                        // Generar Hash Criptográfico Simulado
-                        const seed = `ANEFF-${num}-${greekIndex}`;
-                        const mockHash = "0x" + Math.abs(Math.sin(num * 999) * 10000000000000).toString(16).substring(0, 12) + 
-                                         Math.abs(Math.cos(num * 999) * 10000000000000).toString(16).substring(0, 12);
-                        setNodeHash(mockHash.toUpperCase());
-                    }
-                }
-            }, [memberData.nodeNumber]);
+        function drawFractal() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.strokeStyle = 'rgba(188, 149, 92, 0.4)';
+            ctx.lineWidth = 1.5;
+            
+            const centerX = canvas.width / 2;
+            const centerY = canvas.height / 2;
+            
+            // Dibujar Espiral Áurea de fondo interactiva
+            ctx.beginPath();
+            let angle = 0;
+            let phi = 1.61803398875;
+            ctx.moveTo(centerX, centerY);
+            for (let i = 0; i < 400; i++) {
+                angle = 0.1 * i;
+                let r = Math.pow(phi, angle / Math.PI) * 2;
+                let x = centerX + r * Math.cos(angle);
+                let y = centerY + r * Math.sin(angle);
+                ctx.lineTo(x, y);
+            }
+            ctx.stroke();
 
-            const handleInputChange = (e) => {
-                const { name, value } = e.target;
-                setMemberData(prev => ({ ...prev, [name]: value }));
-            };
+            // Dibujar estructura geométrica central recursiva
+            drawNodeTree(centerX, centerY + 100, 70, -Math.PI / 2, 7);
+        }
 
-            return (
-                <div className="min-h-screen p-4 md:p-8 flex flex-col items-center bg-slate-950">
-                    
-                    {/* PANEL DE CONTROL */}
-                    <div className="w-full max-w-4xl bg-slate-900/90 border-b-4 border-amber-600 p-6 rounded-t-xl mb-8 shadow-2xl">
-                        <div className="flex items-center gap-3 text-amber-500 font-bold mb-6 border-b border-white/10 pb-4">
-                            <i data-lucide="settings" className="w-6 h-6"></i>
-                            <h2 className="font-orbitron tracking-widest text-lg">PANEL DE EMISIÓN (NODO MAESTRO)</h2>
-                        </div>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                            <div>
-                                <label className="block text-[10px] text-cyan-500 uppercase tracking-wider mb-2">Nombre del Miembro</label>
-                                <input name="name" onChange={handleInputChange} placeholder="Ej: Juan Pérez" className="w-full bg-black/50 border border-slate-700 rounded-none p-3 text-base focus:border-amber-500 outline-none text-white font-playfair transition-all" />
-                            </div>
-                            <div>
-                                <label className="block text-[10px] text-cyan-500 uppercase tracking-wider mb-2">Número de Nodo (1-72)</label>
-                                <div className="flex gap-4 items-center">
-                                    <input name="nodeNumber" type="number" min="1" max="72" value={memberData.nodeNumber} onChange={handleInputChange} className="w-24 bg-black/50 border border-slate-700 rounded-none p-3 text-base text-center focus:border-amber-500 outline-none text-white font-orbitron transition-all" />
-                                    <div className="text-xs text-slate-400">
-                                        <span className="block text-amber-500 font-bold">Asignación Automática:</span>
-                                        Escuadrón {greekData.name} ({greekData.symbol}) • Unidad {greekData.subIndex}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+        function drawNodeTree(x, y, len, angle, depth) {
+            if (depth === 0) return;
 
-                    {/* CERTIFICADO PREMIUM */}
-                    <div className="relative w-full max-w-[1000px] aspect-[1.6/1] bg-black border-[16px] border-double border-amber-700/40 shadow-[0_0_80px_rgba(255,165,0,0.15)] overflow-hidden fractal-bg">
-                        
-                        {/* Marco Interno Decorativo */}
-                        <div className="absolute inset-4 border border-amber-500/30"></div>
-                        <div className="absolute inset-6 border border-cyan-500/20"></div>
+            // Variación proporcional basada en Φ
+            let x2 = x + len * Math.cos(angle);
+            let y2 = y + len * Math.sin(angle);
 
-                        {/* Marca de Agua Gigante */}
-                        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-[350px] font-serif text-white/5 pointer-events-none select-none flex items-center justify-center">
-                            {greekData.symbol}
-                        </div>
+            ctx.beginPath();
+            ctx.moveTo(x, y);
+            ctx.lineTo(x2, y2);
+            // Degradado de color institucional a medida que se ramifica
+            ctx.strokeStyle = depth > 4 ? '#6A1B29' : (depth > 2 ? '#BC955C' : '#13322B');
+            ctx.lineWidth = depth * 0.7;
+            ctx.stroke();
 
-                        {/* LOGO PERSONALIZADO (Esquina Superior Izquierda) */}
-                        <div className="absolute top-10 left-10 z-20">
-                            <div className="w-28 h-28 rounded-full border-2 border-amber-500/50 p-1 bg-black/80 backdrop-blur-md shadow-lg flex items-center justify-center overflow-hidden">
-                                <img 
-                                    src="./a0b7b020-3e54-4220-a0d8-113708e3084e.jfif" 
-                                    alt="Escudo ANEFF" 
-                                    className="w-full h-full object-cover rounded-full opacity-90"
-                                    onError={(e) => { e.target.style.display='none'; e.target.parentNode.innerHTML='<span class="text-xs text-amber-500">LOGO</span>'}} 
-                                />
-                            </div>
-                        </div>
+            let childLen = len / 1.3; 
+            // Ángulo basado en proporciones estables
+            drawNodeTree(x2, y2, childLen, angle - 0.45, depth - 1);
+            drawNodeTree(x2, y2, childLen, angle + 0.45, depth - 1);
+        }
 
-                        {/* Encabezado */}
-                        <div className="relative z-10 pt-12 text-center">
-                            <div className="inline-block border-b-2 border-amber-600 pb-2 mb-2">
-                                <h3 className="text-amber-500 font-bold tracking-[0.6em] text-[10px] uppercase font-orbitron">Asociación Nacional de Educación Financiera Fractal</h3>
-                            </div>
-                            <h1 className="text-6xl font-bold tracking-tighter text-white uppercase font-playfair text-gold drop-shadow-md mt-2">
-                                Certificado de Nodo
-                            </h1>
-                            <p className="text-[10px] text-cyan-500/60 uppercase tracking-[0.4em] mt-2">Fase Génesis • Ecosistema EDUFT</p>
-                        </div>
+        // --- LÓGICA DE LA TERMINAL DE COMANDOS ---
+        const terminalOutput = document.getElementById('terminalOutput');
+        const terminalInput = document.getElementById('terminalInput');
+        const terminalBody = document.getElementById('terminalBody');
 
-                        {/* Cuerpo Central */}
-                        <div className="relative z-10 flex flex-col items-center justify-center h-[50%] mt-4">
-                            <p className="text-slate-400 font-playfair italic text-sm mb-6">Por medio de la presente se reconoce la soberanía digital de:</p>
-                            
-                            <h2 className="text-5xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-amber-100 to-slate-300 tracking-wide mb-6 uppercase font-cinzel drop-shadow-lg">
-                                {memberData.name}
-                            </h2>
+        const baseText = `[SISTEMA INICIALIZADO - 15 DE MAYO DE 2026]
+------------------------------------------------------------
+2021: "El capital al servicio de la conciencia"
+2026: "Donde cada pulso de tu ser es el centro del universo™"
+------------------------------------------------------------
+¡Bienvenido al repositorio central de ANEFF! 
+Sincronía Educativa, Criptoeconomía y Tecnología Fractal.
 
-                            {/* Datos del Nodo */}
-                            <div className="flex items-center gap-12 mt-4 bg-black/40 px-10 py-4 rounded-full border border-white/10 backdrop-blur-sm">
-                                <div className="text-center">
-                                    <p className="text-[9px] text-slate-500 uppercase tracking-widest font-orbitron mb-1">Escuadrón</p>
-                                    <p className="text-3xl text-amber-400 font-serif font-bold">{greekData.symbol} <span className="text-lg text-white">{greekData.name}</span></p>
-                                </div>
-                                <div className="h-10 w-px bg-gradient-to-b from-transparent via-cyan-500 to-transparent"></div>
-                                <div className="text-center">
-                                    <p className="text-[9px] text-slate-500 uppercase tracking-widest font-orbitron mb-1">Identificador</p>
-                                    <p className="text-3xl text-cyan-400 font-mono font-bold">#{memberData.nodeNumber.toString().padStart(2, '0')}</p>
-                                </div>
-                            </div>
-                        </div>
+Escribe uno de los siguientes comandos para explorar la base:
+  <span class="text-gold">principios</span>   - Declaración política y Nueva Escuela Mexicana.
+  <span class="text-gold">impacto</span>      - Avances reales en la Escuela Primaria Leonor Baqueriza.
+  <span class="text-gold">maestros</span>     - Reflexión y felicitación en el Día del Maestro.
+  <span class="text-gold">clear</span>        - Limpiar la terminal.
+`;
 
-                        {/* Footer Técnico y Firma */}
-                        <div className="absolute bottom-10 left-12 right-12 flex justify-between items-end">
-                            
-                            {/* Hash de Seguridad */}
-                            <div className="text-left max-w-xs">
-                                <div className="flex items-center gap-2 text-cyan-600/80 mb-2">
-                                    <i data-lucide="fingerprint" className="w-6 h-6"></i>
-                                    <span className="text-[9px] font-bold uppercase tracking-widest font-orbitron">Hash Inmutable</span>
-                                </div>
-                                <p className="text-[9px] font-mono text-slate-500 break-all leading-tight">{nodeHash}</p>
-                                <p className="text-[9px] font-mono text-amber-600/70 mt-1 uppercase">Fecha de Emisión: {memberData.date}</p>
-                            </div>
+        terminalOutput.innerHTML = baseText;
 
-                            {/* Sello Central */}
-                            <div className="absolute left-1/2 transform -translate-x-1/2 bottom-2 opacity-80">
-                                <div className="w-20 h-20 border-2 border-amber-600/30 rounded-full flex items-center justify-center bg-black/50">
-                                    <i data-lucide="award" className="w-10 h-10 text-amber-500"></i>
-                                </div>
-                            </div>
+        const db = {
+            principios: `
+<span class="text-gold">>> DECLARACIÓN DE PRINCIPIOS e INSTITUCIONALIDAD</span>
+Hoy celebramos 5 años de ANEFF. Nacimos en 2021 bajo la visión transformadora del Presidente <span class="highlight">Andrés Manuel López Obrador</span>, y hoy reafirmamos nuestra voluntad de profundizar el cambio junto a la <span class="highlight">Dra. Claudia Sheinbaum</span>. 
 
-                            {/* Firma */}
-                            <div className="text-right flex flex-col items-end">
-                                <div className="text-white/90 mb-2 scale-110 italic font-playfair text-2xl relative" style={{ fontFamily: 'Dancing Script, cursive' }}>
-                                   Jesus Antonio De Leon Reyes
-                                   {/* Línea de firma decorativa */}
-                                   <div className="absolute -bottom-1 left-0 w-full h-0.5 bg-amber-500/50"></div>
-                                </div>
-                                <p className="text-[10px] font-bold text-cyan-500 uppercase tracking-widest font-orbitron">Presidente Fundador</p>
-                                <p className="text-[8px] text-slate-500 uppercase tracking-wider">Arquitectura Fractal ANEFF</p>
-                            </div>
-                        </div>
+A través de alianzas estratégicas con las y los Diputados de Morena, nos sumamos al impulso de la <span class="text-accent">Nueva Escuela Mexicana</span> para convertir la ciencia y la tecnología en herramientas de justicia social.
 
-                    </div>
-                    
-                    <p className="mt-4 text-slate-600 text-xs italic">Diseñado para captura de alta resolución • 2026</p>
-                </div>
-            );
+En total sintonía con los ejes de la <span class="text-gold">SEP sobre Ciencia, Tecnología e Innovación</span>, ANEFF proyecta un nuevo estándar: la integración de la Criptoeconomía y la Tecnología Fractal como pilares de autonomía institucional. Buscamos que el valor generado en nuestras aulas se traduzca en soberanía digital, protegiendo el legado docente y el talento de los estudiantes mexicanos.`,
+            
+            impacto: `
+<span class="text-gold">>> IMPACTO SOCIAL Y TERRITORIAL</span>
+Nuestra gratitud a la <span class="text-accent">Institución Primaria Leonor Baqueriza</span>, testigo de este origen. Gracias al premio en efectivo entregado a la institución, hoy sus aulas cuentan con <span class="highlight">laptops y proyectores</span> que fortalecen el proceso de enseñanza-aprendizaje.
+
+<span class="text-accent">Próximas Acciones:</span> En las semanas venideras, realizaremos una visita oficial a la institución para la presentación de los avances del Proyecto ANEFF ante la dirección. Recorreremos los salones equipados para recoger la experiencia directa de los profesores, asegurando que la tecnología siga sirviendo al humanismo que nos define.`,
+            
+            maestros: `
+<span class="text-gold">>> REFLEXIÓN EN EL DÍA DEL MAESTRO</span>
+En este tiempo de transformación, nuestra felicitación es un reconocimiento a la profundidad de su labor. Celebramos a quienes educan en esta nueva era de <span class="highlight">mujeres empoderadas</span>, donde la sensibilidad y la fuerza guían el destino de la nación. 
+
+Extendemos un abrazo reflexivo a las maestras y maestros que, con visión humanista, sostienen el intelecto y el espíritu de México.
+
+<span class="text-accent">¡Felicidades a las y los arquitectos de la conciencia!</span>
+ANEFF: 2021 — 2026.`
         };
 
-        const root = ReactDOM.createRoot(document.getElementById('root'));
-        root.render(<App />);
-        
-        setTimeout(() => lucide.createIcons(), 100);
-    </script>
-</body>
-
-</html>
+        terminalInput.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                const command = terminalInput.value.trim().toLowerCase();
