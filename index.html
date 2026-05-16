@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Comunicado ANEFF - Pantalla Completa</title>
+    <title>Comunicado ANEFF - Geometría Sagrada</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Lora:ital,wght@0,400;0,500;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -17,7 +17,6 @@
             font-family: 'Lora', serif;
         }
 
-        /* Contenedor ajustado a pantalla completa y ancho máximo */
         .document-container {
             background-color: #ffffff;
             width: 100vw;
@@ -33,7 +32,6 @@
             width: 100%;
         }
 
-        /* Logos con tamaño aumentado para visibilidad */
         .logo-left {
             position: absolute;
             top: 40px;
@@ -65,7 +63,6 @@
             z-index: 0;
         }
 
-        /* Padding aumentado para que el contenido respire en pantalla completa */
         .content-wrapper {
             padding: 15rem 8% 8rem 8%; 
             position: relative;
@@ -82,7 +79,6 @@
             background: linear-gradient(90deg, rgba(218, 165, 32, 0.06) 0%, transparent 100%);
         }
 
-        /* Tipografía extra grande para nitidez absoluta */
         .text-body {
             color: #1a1a1a;
             line-height: 1.8;
@@ -126,16 +122,96 @@
             padding-top: 3rem;
         }
 
-        /* Ajustes para móviles manteniendo el tamaño de letra legible */
+        .books-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1.5rem;
+            margin-top: 4rem;
+        }
+
+        .book-card {
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #e5e7eb;
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .book-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(139, 107, 29, 0.2);
+        }
+
+        .book-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .book-card .overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(139, 107, 29, 0.9);
+            color: white;
+            padding: 0.5rem;
+            text-align: center;
+            font-size: 0.9rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .book-card:hover .overlay {
+            opacity: 1;
+        }
+
+        #lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 15, 24, 0.95);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        #lightbox img {
+            max-width: 90%;
+            max-height: 90vh;
+            box-shadow: 0 0 50px rgba(0,0,0,0.5);
+            border: 4px solid #daa520;
+        }
+
+        .julia-fractal {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto;
+            color: #8b6b1d;
+        }
+
         @media (max-width: 768px) {
             .content-wrapper { padding: 14rem 5% 4rem 5%; }
             .logo-left, .logo-right { top: 20px; width: 35%; }
             .text-body { font-size: 1.3rem; }
             .slogan-box { padding: 1.5rem; }
+            .books-gallery { grid-template-columns: repeat(2, 1fr); }
         }
     </style>
 </head>
 <body>
+
+    <div id="lightbox" onclick="this.style.display='none'">
+        <img id="lightbox-img" src="" alt="Ampliación">
+        <div class="absolute top-10 right-10 text-white cursor-pointer">
+            <i data-lucide="x" class="w-12 h-12"></i>
+        </div>
+    </div>
 
     <div class="document-container">
         <div class="header-line"></div>
@@ -156,7 +232,12 @@
             
             <div class="text-center mb-16">
                 <div class="flex justify-center mb-6">
-                    <i data-lucide="award" class="w-20 h-20 text-yellow-600 opacity-90"></i>
+                    <!-- Fractal de Julia Estilizado -->
+                    <svg class="julia-fractal" viewBox="0 0 200 200" fill="currentColor">
+                        <path d="M100,20 C120,20 140,40 140,60 C140,80 120,100 100,100 C80,100 60,80 60,60 C60,40 80,20 100,20 M100,180 C120,180 140,160 140,140 C140,120 120,100 100,100 C80,100 60,120 60,140 C60,160 80,180 100,180 M20,100 C20,80 40,60 60,60 C80,60 100,80 100,100 C100,120 80,140 60,140 C40,140 20,120 20,100 M180,100 C180,80 160,60 140,60 C120,60 100,80 100,100 C100,120 120,140 140,140 C160,140 180,120 180,100" opacity="0.8"/>
+                        <circle cx="100" cy="100" r="10" />
+                        <path d="M100,10 L100,190 M10,100 L190,100" stroke="currentColor" stroke-width="1" opacity="0.3"/>
+                    </svg>
                 </div>
                 <h1 class="text-7xl font-bold tracking-[0.25em] text-gray-900 mb-4 uppercase">ANEFF</h1>
                 <p class="font-montserrat text-2xl font-semibold tracking-[0.2em] text-yellow-700 uppercase mb-3">Asociación Nacional De Educación Financiera Fractal</p>
@@ -171,19 +252,46 @@
                 <p class="font-bold text-gray-900 font-cinzel text-4xl text-center mb-14 tracking-wide underline decoration-yellow-600/30 underline-offset-8 uppercase">Raíces de Transformación: El Orgullo de Nuestro Origen</p>
                 
                 <p>
-                    Con profunda emoción celebramos hoy el 5to aniversario de <span class="font-bold">ANEFF</span>. Miramos con orgullo aquel 2021 donde, inspirados por la visión transformadora del Presidente <span class="highlight-gold text-yellow-700">Andrés Manuel López Obrador</span>, sembramos una semilla de cambio que hoy florece junto a la <span class="highlight-gold text-yellow-700">Dra. Claudia Sheinbaum Pardo</span>. Lo que comenzó como un sueño de justicia social, hoy se consolida a través de la Nueva Escuela Mexicana, convirtiendo la ciencia y la tecnología en patrimonio del pueblo.
+                    Con profunda emoción celebramos hoy el 5to aniversario de <span class="font-bold">ANEFF</span>. Miramos con orgullo aquel 2021 donde, inspirados por la visión transformadora del Presidente <span class="highlight-gold text-yellow-700">Andrés Manuel López Obrador</span>, sembramos una semilla de cambio que hoy florece junto a la <span class="highlight-gold text-yellow-700">Dra. Claudia Sheinbaum Pardo</span>. Este camino ha sido posible gracias a la labor de la entonces secretaria de educación, <span class="highlight-gold text-yellow-700">Delfína Gómez Álvarez</span>, quien coordinó los esfuerzos de la mano con los mexicanos que buscamos una verdadera transformación, consolidando la Nueva Escuela Mexicana como un espacio donde la ciencia y la sabiduría ancestral se encuentran.
                 </p>
 
                 <p>
-                    Hoy, ese esfuerzo rinde su fruto más trascendental: el <span class="font-bold underline decoration-yellow-500">pensamiento fractal ya es una realidad en los libros de texto de 3er grado de primaria</span>. Ver la Tecnología Fractal integrada oficialmente en la educación básica de México es el mayor testimonio de nuestra sintonía con la SEP. Estamos forjando soberanía digital desde la infancia, integrando la criptoeconomía y el humanismo como pilares de una nueva autonomía nacional.
+                    Hoy, ese esfuerzo rinde su fruto más personal y trascendental: el <span class="font-bold underline decoration-yellow-500">reconocimiento del lenguaje de la naturaleza y la geometría sagrada</span> como una realidad en los libros de texto de 3er grado de primaria. Ver estas figuras geométricas, que son el pulso mismo de la vida, integradas oficialmente en la educación básica de México, es el mayor testimonio de nuestra sintonía con la SEP. Estamos cultivando una nueva percepción del mundo desde la infancia, integrando el humanismo y la armonía natural como pilares de una nueva autonomía nacional.
+                </p>
+
+                <div class="mt-20">
+                    <p class="mb-8 text-center italic text-gray-600">Pulse sobre cualquier página para visualizar en detalle las figuras y saberes integrados en el programa educativo.</p>
+                    
+                    <div class="books-gallery">
+                        <div class="book-card" onclick="openImage('Captura de pantalla 2025-05-09 015654.png')">
+                            <img src="Captura de pantalla 2025-05-09 015654.png" alt="Página del libro 1">
+                            <div class="overlay">Figuras de la Naturaleza 1</div>
+                        </div>
+                        <div class="book-card" onclick="openImage('Captura de pantalla 2025-05-09 015716.png')">
+                            <img src="Captura de pantalla 2025-05-09 015716.png" alt="Página del libro 2">
+                            <div class="overlay">Figuras de la Naturaleza 2</div>
+                        </div>
+                        <div class="book-card" onclick="openImage('Captura de pantalla 2025-05-09 005755.png')">
+                            <img src="Captura de pantalla 2025-05-09 005755.png" alt="Página del libro 3">
+                            <div class="overlay">Geometría en Proyectos 1</div>
+                        </div>
+                        <div class="book-card" onclick="openImage('Captura de pantalla 2025-05-09 011008.png')">
+                            <img src="Captura de pantalla 2025-05-09 011008.png" alt="Página del libro 4">
+                            <div class="overlay">Geometría en Proyectos 2</div>
+                        </div>
+                        <div class="book-card" onclick="openImage('Captura de pantalla 2025-05-09 012248.png')">
+                            <img src="Captura de pantalla 2025-05-09 012248.png" alt="Página del libro 5">
+                            <div class="overlay">Geometría en Proyectos 3</div>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="mt-12">
+                    Nuestra gratitud eterna a la <span class="highlight-gold font-bold">Institución Primaria Leonor Baqueriza</span>, cuna y testigo de nuestro nacimiento. Gracias al premio entregado, sus aulas hoy son espacios de vanguardia que honran aquel primer paso que nos permitió demostrar que el acceso al conocimiento y a las herramientas modernas es un derecho de todos.
                 </p>
 
                 <p>
-                    Nuestra gratitud eterna a la <span class="highlight-gold font-bold">Institución Primaria Leonor Baqueriza</span>, cuna y testigo de nuestro nacimiento. Gracias al premio entregado, sus aulas hoy son espacios de vanguardia equipados con laptops y proyectores, honrando aquel primer paso que nos permitió demostrar que la tecnología es un derecho, no un privilegio.
-                </p>
-
-                <p>
-                    Próximamente, realizaremos una visita oficial a la institución para presentar los avances del Proyecto ANEFF. Será un honor recorrer nuevamente esos salones, ahora equipados, para recoger la experiencia de los profesores y reafirmar que nuestro corazón sigue donde todo comenzó.
+                    Próximamente, realizaremos una visita oficial a la institución para presentar los avances de este sueño compartido. Será un honor recorrer nuevamente esos salones para recoger la experiencia de los profesores y reafirmar que nuestro corazón sigue donde todo comenzó, latiendo al ritmo de la transformación educativa de nuestra nación.
                 </p>
 
                 <p class="italic text-gray-700 mt-16 pt-12 border-t border-gray-100 text-3xl leading-relaxed text-center font-medium">
@@ -215,6 +323,13 @@
 
     <script>
         lucide.createIcons();
+
+        function openImage(src) {
+            const lightbox = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            lightbox.style.display = 'flex';
+        }
     </script>
 </body>
 </html>
