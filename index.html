@@ -3,325 +3,171 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ANEFF | Terminal de Soberanía Tecnológica</title>
+    <title>Comunicado ANEFF - 5to Aniversario</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Lora:ital,wght@0,400;0,500;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        :root {
-            --color-guinda: #6A1B29;
-            --color-oro: #BC955C;
-            --color-verde: #13322B;
-            --color-bg: #090B0E;
-            --color-terminal-bg: #11141A;
-            --color-text: #E0E6ED;
-            --color-accent: #00FFCC;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Courier New', Courier, monospace;
-        }
-
         body {
-            background-color: var(--color-bg);
-            color: var(--color-text);
-            height: 100vh;
+            background-color: #f4f4f5; /* Fondo gris muy claro para simular papel o escritorio */
             display: flex;
-            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 2rem;
+            font-family: 'Lora', serif;
+        }
+
+        .document-container {
+            background-color: #ffffff;
+            width: 100%;
+            max-width: 800px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+            border-radius: 4px;
+            position: relative;
             overflow: hidden;
         }
 
-        /* Encabezado Institucional */
-        header {
-            background: linear-gradient(135deg, var(--color-guinda), var(--color-verde));
-            border-bottom: 3px solid var(--color-oro);
-            padding: 15px 25px;
+        /* Línea dorada superior institucional */
+        .header-line {
+            height: 6px;
+            background: linear-gradient(90deg, #b8860b, #daa520, #b8860b);
+            width: 100%;
+        }
+
+        /* Marca de agua sutil de ANEFF en el fondo */
+        .watermark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 0;
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        }
+
+        .content-wrapper {
+            padding: 4rem 5rem;
+            position: relative;
             z-index: 10;
         }
 
-        .header-title h1 {
-            color: #FFFFFF;
-            font-size: 1.4rem;
-            letter-spacing: 2px;
+        h1, h2, .font-cinzel {
+            font-family: 'Cinzel', serif;
         }
 
-        .header-title p {
-            color: var(--color-oro);
-            font-size: 0.85rem;
-            margin-top: 4px;
+        .font-montserrat {
+            font-family: 'Montserrat', sans-serif;
         }
 
-        .header-badge {
-            text-align: right;
-            border-left: 2px solid var(--color-oro);
-            padding-left: 15px;
+        .slogan-box {
+            border-left: 3px solid #b8860b;
+            padding-left: 1.5rem;
+            margin: 2.5rem 0;
+            background: linear-gradient(90deg, rgba(184, 134, 11, 0.05) 0%, transparent 100%);
+            padding-top: 1rem;
+            padding-bottom: 1rem;
         }
 
-        .header-badge .year {
-            color: #FFFFFF;
-            font-weight: bold;
-            font-size: 1.1rem;
+        .text-body {
+            color: #333333;
+            line-height: 1.8;
+            font-size: 1.05rem;
+            text-align: justify;
         }
 
-        /* Contenedor Principal */
-        .main-container {
-            flex: 1;
-            display: flex;
-            height: calc(100vh - 75px);
+        .highlight-gold {
+            color: #9e7305;
+            font-weight: 500;
+        }
+        
+        .footer-stamp {
+            border-top: 1px solid #eaeaea;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            text-align: center;
         }
 
-        /* Panel Izquierdo: Canvas Fractal */
-        .canvas-panel {
-            flex: 1;
-            position: relative;
-            background: radial-gradient(circle at center, #11151D 0%, #05070A 100%);
-            border-right: 1px solid rgba(188, 149, 92, 0.2);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-        canvas {
-            width: 100%;
-            height: 100%;
-        }
-
-        .canvas-overlay {
-            position: absolute;
-            bottom: 20px;
-            left: 20px;
-            background: rgba(9, 11, 14, 0.8);
-            border: 1px solid var(--color-oro);
-            padding: 10px;
-            font-size: 0.75rem;
-            pointer-events: none;
-            border-radius: 4px;
-        }
-
-        /* Panel Derecho: Terminal */
-        .terminal-panel {
-            width: 55%;
-            background-color: var(--color-terminal-bg);
-            display: flex;
-            flex-direction: column;
-            border-top: 1px solid rgba(255,255,255,0.05);
-        }
-
-        .terminal-header {
-            background-color: rgba(0, 0, 0, 0.3);
-            padding: 10px 20px;
-            border-bottom: 1px solid rgba(188, 149, 92, 0.3);
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.8rem;
-            color: var(--color-oro);
-        }
-
-        .terminal-body {
-            flex: 1;
-            padding: 20px;
-            overflow-y: auto;
-            font-size: 0.9rem;
-            line-height: 1.5;
-        }
-
-        .terminal-output {
-            white-space: pre-wrap;
-            margin-bottom: 15px;
-        }
-
-        .terminal-line {
-            margin-bottom: 10px;
-        }
-
-        .command-prompt {
-            display: flex;
-            align-items: center;
-            background-color: rgba(0,0,0,0.2);
-            padding: 10px;
-            border-top: 1px solid rgba(255,255,255,0.05);
-        }
-
-        .prompt-symbol {
-            color: var(--color-accent);
-            margin-right: 10px;
-            font-weight: bold;
-        }
-
-        .terminal-input {
-            flex: 1;
-            background: none;
-            border: none;
-            color: #FFFFFF;
-            font-family: inherit;
-            font-size: 0.9rem;
-            outline: none;
-        }
-
-        /* Estilos de Texto dentro de la Terminal */
-        .text-gold { color: var(--color-oro); }
-        .text-accent { color: var(--color-accent); }
-        .text-guinda { color: #E67E22; }
-        .highlight { background-color: rgba(188, 149, 92, 0.15); padding: 2px 5px; border-radius: 3px; }
-
-        @media (max-width: 900px) {
-            .main-container { flex-direction: column; }
-            .terminal-panel { width: 100%; height: 60%; }
-            .canvas-panel { height: 40%; }
+        @media (max-width: 640px) {
+            .content-wrapper { padding: 2rem; }
+            .text-body { font-size: 1rem; }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="header-title">
-            <h1>ANEFF | Ecosistema de Soberanía Tecnológica</h1>
-            <p>"Donde cada pulso de tu ser es el centro del universo™"</p>
-        </div>
-        <div class="header-badge">
-            <div class="year">Horizonte 2026</div>
-            <div style="font-size: 0.7rem; color: #ccc; margin-top: 2px;">5° Aniversario (2021-2026)</div>
-        </div>
-    </header>
-
-    <div class="main-container">
+    <div class="document-container">
+        <div class="header-line"></div>
         
-        <div class="canvas-panel">
-            <canvas id="fractalCanvas"></canvas>
-            <div class="canvas-overlay">
-                <div>SISTEMA: Iterativo Autorreplicable</div>
-                <div>PROPORCIÓN: Áurea (Φ ≈ 1.618034)</div>
-                <div>ESTADO: Emitiendo Nodos en Sincronía</div>
-            </div>
+        <div class="watermark">
+            <i data-lucide="infinity" style="width: 400px; height: 400px; color: #000;"></i>
         </div>
 
-        <div class="terminal-panel">
-            <div class="terminal-header">
-                <span>CONSOLA NODO RAÍZ v2.0.26-PROD</span>
-                <span>15 de Mayo - Conectado</span>
+        <div class="content-wrapper">
+            
+            <!-- Encabezado -->
+            <div class="text-center mb-8">
+                <div class="flex justify-center mb-4">
+                    <i data-lucide="infinity" class="w-10 h-10 text-gray-800"></i>
+                </div>
+                <h1 class="text-3xl font-bold tracking-widest text-gray-900 mb-2 uppercase">ANEFF</h1>
+                <p class="font-montserrat text-xs tracking-[0.3em] text-gray-500 uppercase">Comunicado Oficial • 15 de Mayo de 2026</p>
             </div>
-            <div class="terminal-body" id="terminalBody">
-                <div class="terminal-output" id="terminalOutput"></div>
+
+            <!-- Caja de Evolución de Eslogan -->
+            <div class="slogan-box">
+                <p class="font-montserrat text-xs text-gray-500 uppercase tracking-widest mb-2">2021 | Fundación</p>
+                <p class="text-lg text-gray-700 italic mb-4">"El capital al servicio de la conciencia"</p>
+                
+                <p class="font-montserrat text-xs text-gray-500 uppercase tracking-widest mb-2 mt-6">2026 | Horizonte de Innovación</p>
+                <p class="text-xl font-cinzel font-bold text-gray-900">"Donde cada pulso de tu ser es el centro del universo™"</p>
+                <p class="font-montserrat text-[10px] text-gray-400 mt-1 italic">Registro de marca en proceso.</p>
             </div>
-            <div class="command-prompt">
-                <span class="prompt-symbol">aneff@root_nodo:~$</span>
-                <input type="text" class="terminal-input" id="terminalInput" placeholder="Escribe 'help', 'principios', 'impacto' o 'maestros'..." autofocus>
+
+            <!-- Cuerpo del Mensaje -->
+            <div class="text-body space-y-6">
+                <p class="font-bold text-gray-900 font-cinzel text-xl text-center mb-8">Sincronía Educativa y Soberanía Tecnológica</p>
+                
+                <p>
+                    Hoy celebramos 5 años de <span class="font-bold">ANEFF</span>. Nacimos en 2021 bajo la visión transformadora del Presidente <span class="highlight-gold">Andrés Manuel López Obrador</span>, y hoy reafirmamos nuestra voluntad de profundizar el cambio junto a la <span class="highlight-gold">Dra. Claudia Sheinbaum</span>. A través de alianzas estratégicas con las y los Diputados de Morena, nos sumamos al impulso de la Nueva Escuela Mexicana para convertir la ciencia y la tecnología en herramientas de justicia social.
+                </p>
+
+                <p>
+                    <span class="font-bold font-montserrat text-sm tracking-wider uppercase">El Horizonte ANEFF y la Vanguardia de la SEP:</span><br>
+                    En total sintonía con los ejes de la SEP sobre Ciencia, Tecnología e Innovación, ANEFF proyecta un nuevo estándar: la integración de la Criptoeconomía y la Tecnología Fractal como pilares de autonomía institucional. Buscamos que el valor generado en nuestras aulas se traduzca en soberanía digital, protegiendo el legado docente y el talento de los estudiantes mexicanos.
+                </p>
+
+                <p>
+                    <span class="font-bold font-montserrat text-sm tracking-wider uppercase">Impacto Real:</span><br>
+                    Nuestra gratitud a la <span class="highlight-gold font-bold">Institución Primaria Leonor Baqueriza</span>, testigo de este origen. Gracias al premio en efectivo entregado a la institución, hoy sus aulas cuentan con laptops y proyectores que fortalecen el proceso de enseñanza-aprendizaje.
+                </p>
+
+                <p>
+                    <span class="font-bold font-montserrat text-sm tracking-wider uppercase">Próximas Acciones:</span><br>
+                    En las semanas venideras, realizaremos una visita oficial a la institución para la presentación de los avances del Proyecto ANEFF ante la dirección. Recorreremos los salones equipados para recoger la experiencia directa de los profesores, asegurando que la tecnología siga sirviendo al humanismo que nos define.
+                </p>
+
+                <p class="italic text-gray-700 mt-8 pb-4 border-b border-gray-200">
+                    <span class="font-bold font-montserrat text-sm tracking-wider uppercase not-italic">Reflexión en el Día del Maestro:</span><br><br>
+                    En este tiempo de transformación, nuestra felicitación es un reconocimiento a la profundidad de su labor. Celebramos a quienes educan en esta nueva era de mujeres empoderadas, donde la sensibilidad y la fuerza guían el destino de la nación. Extendemos un abrazo reflexivo a las maestras y maestros que, con visión humanista, sostienen el intelecto y el espíritu de México.
+                </p>
             </div>
+
+            <!-- Firma / Cierre -->
+            <div class="footer-stamp">
+                <h3 class="font-cinzel text-xl font-bold text-gray-900 mb-2">¡Felicidades a las y los arquitectos de la conciencia!</h3>
+                <p class="font-montserrat text-sm tracking-[0.2em] text-gray-500 uppercase">Asociación Nacional de Educación Financiera Fractal</p>
+                <p class="font-montserrat text-xs text-gray-400 mt-2 tracking-widest">2021 — 2026</p>
+            </div>
+
         </div>
     </div>
 
     <script>
-        // --- LÓGICA DEL CANVAS FRACTAL ---
-        const canvas = document.getElementById('fractalCanvas');
-        const ctx = canvas.getContext('2d');
-
-        function resizeCanvas() {
-            canvas.width = canvas.parentElement.clientWidth;
-            canvas.height = canvas.parentElement.clientHeight;
-            drawFractal();
-        }
-
-        window.addEventListener('resize', resizeCanvas);
-
-        function drawFractal() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.strokeStyle = 'rgba(188, 149, 92, 0.4)';
-            ctx.lineWidth = 1.5;
-            
-            const centerX = canvas.width / 2;
-            const centerY = canvas.height / 2;
-            
-            // Dibujar Espiral Áurea de fondo interactiva
-            ctx.beginPath();
-            let angle = 0;
-            let phi = 1.61803398875;
-            ctx.moveTo(centerX, centerY);
-            for (let i = 0; i < 400; i++) {
-                angle = 0.1 * i;
-                let r = Math.pow(phi, angle / Math.PI) * 2;
-                let x = centerX + r * Math.cos(angle);
-                let y = centerY + r * Math.sin(angle);
-                ctx.lineTo(x, y);
-            }
-            ctx.stroke();
-
-            // Dibujar estructura geométrica central recursiva
-            drawNodeTree(centerX, centerY + 100, 70, -Math.PI / 2, 7);
-        }
-
-        function drawNodeTree(x, y, len, angle, depth) {
-            if (depth === 0) return;
-
-            // Variación proporcional basada en Φ
-            let x2 = x + len * Math.cos(angle);
-            let y2 = y + len * Math.sin(angle);
-
-            ctx.beginPath();
-            ctx.moveTo(x, y);
-            ctx.lineTo(x2, y2);
-            // Degradado de color institucional a medida que se ramifica
-            ctx.strokeStyle = depth > 4 ? '#6A1B29' : (depth > 2 ? '#BC955C' : '#13322B');
-            ctx.lineWidth = depth * 0.7;
-            ctx.stroke();
-
-            let childLen = len / 1.3; 
-            // Ángulo basado en proporciones estables
-            drawNodeTree(x2, y2, childLen, angle - 0.45, depth - 1);
-            drawNodeTree(x2, y2, childLen, angle + 0.45, depth - 1);
-        }
-
-        // --- LÓGICA DE LA TERMINAL DE COMANDOS ---
-        const terminalOutput = document.getElementById('terminalOutput');
-        const terminalInput = document.getElementById('terminalInput');
-        const terminalBody = document.getElementById('terminalBody');
-
-        const baseText = `[SISTEMA INICIALIZADO - 15 DE MAYO DE 2026]
-------------------------------------------------------------
-2021: "El capital al servicio de la conciencia"
-2026: "Donde cada pulso de tu ser es el centro del universo™"
-------------------------------------------------------------
-¡Bienvenido al repositorio central de ANEFF! 
-Sincronía Educativa, Criptoeconomía y Tecnología Fractal.
-
-Escribe uno de los siguientes comandos para explorar la base:
-  <span class="text-gold">principios</span>   - Declaración política y Nueva Escuela Mexicana.
-  <span class="text-gold">impacto</span>      - Avances reales en la Escuela Primaria Leonor Baqueriza.
-  <span class="text-gold">maestros</span>     - Reflexión y felicitación en el Día del Maestro.
-  <span class="text-gold">clear</span>        - Limpiar la terminal.
-`;
-
-        terminalOutput.innerHTML = baseText;
-
-        const db = {
-            principios: `
-<span class="text-gold">>> DECLARACIÓN DE PRINCIPIOS e INSTITUCIONALIDAD</span>
-Hoy celebramos 5 años de ANEFF. Nacimos en 2021 bajo la visión transformadora del Presidente <span class="highlight">Andrés Manuel López Obrador</span>, y hoy reafirmamos nuestra voluntad de profundizar el cambio junto a la <span class="highlight">Dra. Claudia Sheinbaum</span>. 
-
-A través de alianzas estratégicas con las y los Diputados de Morena, nos sumamos al impulso de la <span class="text-accent">Nueva Escuela Mexicana</span> para convertir la ciencia y la tecnología en herramientas de justicia social.
-
-En total sintonía con los ejes de la <span class="text-gold">SEP sobre Ciencia, Tecnología e Innovación</span>, ANEFF proyecta un nuevo estándar: la integración de la Criptoeconomía y la Tecnología Fractal como pilares de autonomía institucional. Buscamos que el valor generado en nuestras aulas se traduzca en soberanía digital, protegiendo el legado docente y el talento de los estudiantes mexicanos.`,
-            
-            impacto: `
-<span class="text-gold">>> IMPACTO SOCIAL Y TERRITORIAL</span>
-Nuestra gratitud a la <span class="text-accent">Institución Primaria Leonor Baqueriza</span>, testigo de este origen. Gracias al premio en efectivo entregado a la institución, hoy sus aulas cuentan con <span class="highlight">laptops y proyectores</span> que fortalecen el proceso de enseñanza-aprendizaje.
-
-<span class="text-accent">Próximas Acciones:</span> En las semanas venideras, realizaremos una visita oficial a la institución para la presentación de los avances del Proyecto ANEFF ante la dirección. Recorreremos los salones equipados para recoger la experiencia directa de los profesores, asegurando que la tecnología siga sirviendo al humanismo que nos define.`,
-            
-            maestros: `
-<span class="text-gold">>> REFLEXIÓN EN EL DÍA DEL MAESTRO</span>
-En este tiempo de transformación, nuestra felicitación es un reconocimiento a la profundidad de su labor. Celebramos a quienes educan en esta nueva era de <span class="highlight">mujeres empoderadas</span>, donde la sensibilidad y la fuerza guían el destino de la nación. 
-
-Extendemos un abrazo reflexivo a las maestras y maestros que, con visión humanista, sostienen el intelecto y el espíritu de México.
-
-<span class="text-accent">¡Felicidades a las y los arquitectos de la conciencia!</span>
-ANEFF: 2021 — 2026.`
-        };
-
-        terminalInput.addEventListener('keydown', function(e) {
-            if (e.key === 'Enter') {
-                const command = terminalInput.value.trim().toLowerCase();
+        lucide.createIcons();
+    </script>
+</body>
+</html>
